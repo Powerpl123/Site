@@ -1654,3 +1654,34 @@ footer {
     border-radius: 1em;
   }
 }
+
+/* --- Navbar Dropdowns --- */
+.navbar-horizontal .dropdown { position: relative; }
+.navbar-horizontal .dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 180px;
+  box-shadow: 0 4px 24px #2196f322;
+  z-index: 1000;
+  left: 0;
+  top: 100%;
+  border-radius: 0.7em;
+  padding: 0.5em 0;
+}
+.navbar-horizontal .dropdown:hover > .dropdown-content,
+.navbar-horizontal .dropdown:focus-within > .dropdown-content {
+  display: block !important;
+}
+.navbar-horizontal .dropdown-content a {
+  color: #1976d2;
+  padding: 0.8em 1.2em;
+  text-decoration: none;
+  display: block;
+  border-radius: 0.5em;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar-horizontal .dropdown-content a:hover {
+  background: #e3f2fd;
+  color: #388e3c;
+}

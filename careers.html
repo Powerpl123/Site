@@ -2,302 +2,269 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Careers | HQ Power Rwanda</title>
-  <link rel="icon" type="image/png" href="Images/Logo.png">
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* Job Cards for Careers Page */
-    .careers-listing {
-      margin-top: 2rem;
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background: linear-gradient(120deg, #e3f2fd 60%, #fffde7 100%);
+      color: #333;
+    }
+    /* NAVIGATION BAR */
+    .navbar-horizontal {
+      background: #1976d2;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-horizontal .logo img {
+      height: 44px;
+      vertical-align: middle;
+    }
+    .nav-links-horizontal {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .nav-links-horizontal a {
+      text-decoration: none;
+      color: #f7f7f6;
+      font-weight: bold;
+      font-size: 1.08em;
+      padding: 0.4em 1em;
+      border-radius: 1.2em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links-horizontal a:hover, .nav-links-horizontal a.active {
+      background: #ffd600;
+      color: #1976d2;
+    }
+    .nav-links-horizontal .dropdown {
+      position: relative;
+      z-index: 10;
+    }
+    .nav-links-horizontal .dropbtn {      
+      color: #f7f7f6;
+      border: none;
+      font-weight: bold;
+      border-radius: 1.2em;
+      padding: 0.4em 1em;
+      cursor: pointer;
+      font-size: 1.08em;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      z-index: 11;
+    }
+    .nav-links-horizontal .dropbtn.active,
+    .nav-links-horizontal .dropbtn:focus {
+      background: #ffd600;
+      color: #1976d2;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 110%;
+      min-width: 180px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+      border-radius: 0.7em;
+      z-index: 1002;
+      padding: 0.5em 0;
+      pointer-events: auto;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.7em 1.2em;
+      color: #1976d2;
+      background: none;
+      border-radius: 0.5em;
+      font-size: 1em;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-content a:hover {
+      background: #e3f2fd;
+      color: #388e3c;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2em;
+      color: #1976d2;
+      cursor: pointer;
+    }
+    /* HEADER */
+    header {
+      text-align: center;
+      background: linear-gradient(90deg, #2196f3 70%, #ffd600 100%);
+      color: white;
+      padding: 3rem 1rem 2rem 1rem;
+      border-radius: 0 0 2em 2em;
+      margin-bottom: 2.5em;
+      box-shadow: 0 4px 24px rgba(33,150,243,0.08);
+    }
+    header h1 {
+      font-size: 2.7em;
+      font-weight: 800;
+      margin-bottom: 0.3em;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 12px rgba(33,150,243,0.13);
+    }
+    header p {
+      font-size: 1.2em;
+      color: #fffde7;
+      margin-bottom: 0.5em;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(33,150,243,0.10);
+    }
+    /* JOBS */
+    .jobs-container {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .job-card {
       background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px rgba(0,87,184,0.08);
+      border-radius: 1.2rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
       padding: 2rem 1.5rem 1.5rem 1.5rem;
-      width: 320px;
-      max-width: 95vw;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      border-left: 6px solid var(--primary-blue);
-      transition: box-shadow 0.2s, transform 0.2s;
+      gap: 0.7em;
+      border: 2px solid #e3f2fd;
+      transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
+      position: relative;
     }
     .job-card:hover {
-      box-shadow: 0 8px 32px rgba(0,87,184,0.15);
-      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 32px #1976d244;
+      transform: translateY(-4px) scale(1.01);
+      border: 2px solid #ffd600;
     }
     .job-card h2 {
-      color: var(--primary-blue);
-      margin-bottom: 0.5rem;
-      font-size: 1.25rem;
+      color: #1976d2;
+      margin: 0 0 0.2em 0;
+      font-size: 1.3em;
+      font-weight: 700;
     }
     .job-card p {
-      margin-bottom: 0.7rem;
-      color: #444;
+      margin: 0.3rem 0;
+      font-size: 0.98rem;
     }
-    .apply-btn {
-      background: var(--accent-yellow);
-      color: var(--primary-blue);
-      font-weight: bold;
+    .job-card button {
+      background: #ffd600;
+      color: #1976d2;
       border: none;
-      border-radius: 20px;
-      padding: 0.6rem 1.5rem;
-      text-decoration: none;
-      font-size: 1rem;
-      margin-top: 0.5rem;
-      transition: background 0.2s, color 0.2s;
-      box-shadow: 0 2px 8px rgba(255,214,0,0.10);
-      display: inline-block;
-    }
-    .apply-btn:hover {
-      background: var(--primary-blue);
-      color: var(--accent-yellow);
-    }
-    section, .features-section, .stats-section, .testimonials-section, .newsletter-section {
-      width: 100%;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Services Page Specific Styles */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      margin-bottom: 2rem;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 2.5rem 1rem;
-      text-align: center;
-    }
-    .hero-image {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-    .hero-svg-bg {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 0;
-    }
-    .feature-card {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    }
-    .feature-icon {
-      margin-bottom: 1rem;
-      padding: 1rem;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .testimonials-section {
-      background: #f9f9f9;
-      padding: 2rem 1rem;
-      border-radius: 12px;
-      margin-top: 2rem;
-      width: 100%;
-      max-width: 800px;
-    }
-    .testimonial-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-    }
-    .testimonial-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin-right: 1rem;
-    }
-    .newsletter-section {
-      background: var(--primary-blue);
-      color: #fff;
-      padding: 2rem 1rem;
-      border-radius: 12px;
-      margin-top: 2rem;
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-    }
-    .newsletter-form {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .newsletter-form input {
-      padding: 0.8rem;
-      border: none;
-      border-radius: 20px 0 0 20px;
-      outline: none;
-      width: 70%;
-      max-width: 300px;
-    }
-    .newsletter-form button {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 0 20px 20px 0;
-      background: var(--accent-yellow);
-      color: var(--primary-blue);
+      padding: 0.7rem 1.5rem;
+      border-radius: 2em;
       font-weight: bold;
       cursor: pointer;
+      margin-top: 1rem;
+      font-size: 1em;
       transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(255,214,0,0.10);
+      align-self: flex-start;
     }
-    .newsletter-form button:hover {
-      background: var(--primary-blue);
-      color: var(--accent-yellow);
+    .job-card button:hover {
+      background: #1976d2;
+      color: #ffd600;
     }
-
-    /* Careers Page Specific Styles */
-    .hero {
-      background: url('assets/careers-hero.jpg') no-repeat center center/cover;
-      color: #fff;
-      position: relative;
-      padding: 4rem 1rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      overflow-y: auto;
+      animation: fadeIn 0.3s;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.125rem;
+    .modal-content {
+      background: white;
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .careers-section {
-      width: 100%;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .career-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .career-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    }
-    .career-card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary-blue);
-      font-size: 1.5rem;
-    }
-    .career-card p {
-      margin-bottom: 1rem;
-      color: #333;
-    }
-    .discover-btn {
-      background: var(--accent-yellow);
-      color: var(--primary-blue);
-      font-weight: bold;
-      border: none;
-      border-radius: 20px;
-      padding: 0.6rem 1.5rem;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.2s, color 0.2s;
-      display: inline-block;
-    }
-    .discover-btn:hover {
-      background: var(--primary-blue);
-      color: var(--accent-yellow);
-    }
-
-    /* Dashboard Section Styles */
-    .dashboard-section {
-      width: 100%;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-    }
-    .dashboard-title {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-blue);
+      margin: 3% auto;
+      padding: 2rem;
+      border-radius: 1.2rem;
+      animation: fadeIn 0.4s ease-in-out;
       position: relative;
+      box-shadow: 0 8px 32px #1976d244;
     }
-    .dashboard-title i {
-      margin-right: 0.5rem;
-      color: var(--accent-yellow);
-    }
-    .dashboard-cards {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .dashboard-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .dashboard-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    }
-    .dashboard-card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary-blue);
-      font-size: 1.25rem;
-    }
-    .dashboard-card p {
+    .modal-content h3 { color: #1976d2; margin-top: 0; }
+    .modal-content ul { padding-left: 1.2rem; }
+    .modal-content button.close, .apply-btn {
+      background: #ffd600;
+      color: #1976d2;
+      border: none;
+      font-weight: bold;
+      border-radius: 2em;
+      padding: 0.6rem 1.4rem;
+      cursor: pointer;
       margin-bottom: 1rem;
-      color: #333;
-      display: flex;
-      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 1em;
     }
-    .dashboard-card p i {
-      margin-right: 0.5rem;
-      color: var(--accent-yellow);
+    .modal-content button.close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.2rem;
+      background: #e3f2fd;
+      color: #1976d2;
+      border-radius: 50%;
+      width: 2.2em;
+      height: 2.2em;
+      padding: 0;
+      box-shadow: none;
     }
+    .modal-content button.close:hover {
+      background: #ffd600;
+      color: #1976d2;
+    }
+    .modal-content .apply-form {
+      margin-top: 2rem;
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    /* FORM */
+    form label { display: block; margin: 1rem 0 0.3rem; font-weight: bold; color: #1976d2; }
+    form input, form textarea, form select {
+      width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 0.5rem; background: #f7fafc;
+    }
+    form button[type="submit"] {
+      margin-top: 1.2rem; width: 100%; background: #1976d2; color: white; font-weight: bold; padding: 1rem; border: none; border-radius: 0.5rem;
+    }
+    form button[type="submit"]:hover {
+      background: #ffd600;
+      color: #1976d2;
+    }
+    @media (max-width: 700px) {
+      .jobs-container { grid-template-columns: 1fr; }
+      .job-card { padding: 1.2em 0.7em; }
+      header { padding: 2em 0.5em 1.2em 0.5em; }
+      .modal-content { padding: 1.2em 0.7em; }
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-  <!-- Universal Navigation Bar: Place just after <body> on every page -->
   <nav class="navbar-horizontal glass-nav">
     <a href="index.html" class="logo">
       <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
@@ -307,76 +274,94 @@
       <li class="dropdown who-dropdown">
         <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
         <div class="dropdown-content">
-          <a href="about.html#management" class="who-link" data-tab="management">Management</a>
-          <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
-          <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
-          <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
+          <a href="about.html#management">Management</a>
+          <a href="about.html#stakeholders">Stakeholders</a>
+          <a href="about.html#lenders">Lenders</a>
+          <a href="about.html#partners">Partners</a>
         </div>
       </li>
       <li class="dropdown project-dropdown-nav">
         <a href="project.html" class="dropbtn">The Project &#9662;</a>
         <div class="dropdown-content">
-          <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
-          <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
-          <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+          <a href="project.html#peat-production">Peat Production</a>
+          <a href="project.html#power-plant">Power Plant</a>
+          <a href="project.html#gallery">Gallery</a>
         </div>
       </li>
-      <li><a href="careers.html">Careers</a></li>
+      <li><a href="careers.html" class="active">Careers</a></li>
       <li><a href="contact.html">Contact Us</a></li>
       <li><a href="gallery.html">Gallery</a></li>
     </ul>
     <div class="menu-toggle" id="menuToggle">&#9776;</div>
   </nav>
 
-  <main class="main-content">
-    <section class="hero animate-fade-in">
-      <div class="hero-content">
-        <h1><span class="highlight">Careers</span></h1>
-        <p>Join our team and help power Rwanda’s future. See our current job openings below.</p>
-      </div>
-    </section>
-    <section class="careers-section">
-      <div class="careers-list">
-        <div class="career-card">
-          <h3>Electrical Engineer</h3>
-          <p>Design, develop, and maintain our power systems. <br><b>Location:</b> Kigali</p>
-          <a href="mailto:hr@hqpower.rw?subject=Application%20for%20Electrical%20Engineer" class="discover-btn" style="margin-top:1em;">Apply Now</a>
-        </div>
-        <div class="career-card">
-          <h3>Plant Operator</h3>
-          <p>Operate and monitor plant equipment. <br><b>Location:</b> Gisagara</p>
-          <a href="mailto:hr@hqpower.rw?subject=Application%20for%20Plant%20Operator" class="discover-btn" style="margin-top:1em;">Apply Now</a>
-        </div>
-        <!-- Add more job openings as needed -->
-      </div>
-    </section>
-    <section class="dashboard-section">
-      <h2 class="dashboard-title"><i class="fas fa-briefcase"></i> Job Openings</h2>
-      <div class="dashboard-cards">
-        <div class="dashboard-card">
-          <h3>Electrical Engineer</h3>
-          <p><i class="fas fa-map-marker-alt"></i> Kigali</p>
-          <p>Design, develop, and maintain our power systems.</p>
-          <a href="mailto:hr@hqpower.rw?subject=Application%20for%20Electrical%20Engineer" class="discover-btn">Apply Now</a>
-        </div>
-        <div class="dashboard-card">
-          <h3>Plant Operator</h3>
-          <p><i class="fas fa-map-marker-alt"></i> Gisagara</p>
-          <p>Operate and monitor plant equipment.</p>
-          <a href="mailto:hr@hqpower.rw?subject=Application%20for%20Plant%20Operator" class="discover-btn">Apply Now</a>
-        </div>
-        <!-- Add more jobs as needed -->
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="contact.html">Contact</a>
+  <header>
+    <h1>Join HQ Power Rwanda</h1>
+    <p>Explore job openings and apply today.</p>
+  </header>
+
+  <section class="jobs-container">
+    <div class="job-card">
+      <h2>Plant Operator</h2>
+      <p><i class="fas fa-map-marker-alt"></i> Gisagara</p>
+      <p><i class="fas fa-briefcase"></i> Full-time</p>
+      <p><i class="fas fa-calendar-plus"></i> Posted: 2025-06-15</p>
+      <p><i class="fas fa-hourglass-end"></i> Deadline: 2025-07-10</p>
+      <button onclick="openModal('plant')">View Full Description</button>
     </div>
-    <p>&copy; 2025 HQ Power Rwanda. All rights reserved.</p>
-  </footer>
-  <script src="js/main.js"></script>
+    <div class="job-card">
+      <h2>IT Support Intern</h2>
+      <p><i class="fas fa-map-marker-alt"></i> Kigali</p>
+      <p><i class="fas fa-briefcase"></i> Internship</p>
+      <p><i class="fas fa-calendar-plus"></i> Posted: 2025-06-20</p>
+      <p><i class="fas fa-hourglass-end"></i> Deadline: 2025-07-20</p>
+      <button onclick="openModal('it')">View Full Description</button>
+    </div>
+    <div class="job-card">
+      <h2>Environmental Analyst Intern</h2>
+      <p><i class="fas fa-map-marker-alt"></i> Huye</p>
+      <p><i class="fas fa-briefcase"></i> Internship</p>
+      <p><i class="fas fa-calendar-plus"></i> Posted: 2025-06-18</p>
+      <p><i class="fas fa-hourglass-end"></i> Deadline: 2025-07-18</p>
+      <button onclick="openModal('environment')">View Full Description</button>
+    </div>
+  </section>
+
+  <div class="modal" id="jobModal">
+    <div class="modal-content">
+      <button class="close" onclick="closeModal()">&times;</button>
+      <div id="jobDetails"></div>
+      <button class="apply-btn" onclick="document.querySelector('.apply-form').style.display='block'">Apply Now</button>
+      <form class="apply-form">
+        <h3>Application Form</h3>
+        <label>Full Name<input type="text" required></label>
+        <label>Email Address<input type="email" required></label>
+        <label>Phone Number<input type="tel" required></label>
+        <label>Current Location<input type="text"></label>
+        <label>Upload Resume<input type="file" accept=".pdf" required></label>
+        <label>Application Letter<input type="file" accept=".pdf" required></label>
+        <label>Supporting Documents<input type="file" multiple></label>
+        <label>Additional Message<textarea rows="4"></textarea></label>
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const jobDescriptions = {
+      plant: `<h3>Plant Operator</h3><p>Responsible for operating and maintaining power plant systems safely and efficiently. Ensures that machinery is working correctly and safety protocols are followed.</p><ul><li>Monitor and control plant equipment</li><li>Routine inspections and troubleshooting</li><li>Report data accurately</li><li>Work with engineers and technicians</li></ul>`,
+      it: `<h3>IT Support Intern</h3><p>Assist with day-to-day IT support tasks such as troubleshooting hardware, installing software, and maintaining internal systems.</p><ul><li>Provide first-line tech support</li><li>Install and configure software</li><li>Document IT incidents</li><li>Assist in hardware setup</li></ul>`,
+      environment: `<h3>Environmental Analyst Intern</h3><p>Assist in conducting environmental assessments and ensuring that the plant complies with environmental regulations.</p><ul><li>Sample collection and data analysis</li><li>Report preparation</li><li>Support environmental audits</li><li>Engage in sustainability research</li></ul>`
+    };
+
+    function openModal(key) {
+      document.getElementById('jobDetails').innerHTML = jobDescriptions[key];
+      document.querySelector('.apply-form').style.display = 'none';
+      document.getElementById('jobModal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('jobModal').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
