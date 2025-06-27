@@ -245,6 +245,49 @@
       .media-btn { width: 38px; height: 38px; font-size: 1.3em; }
       .media-dot { width: 12px; height: 12px; }
     }
+
+    /* Beautified layout for the text content in each section (no change to the outer box) */
+    .media-text-col .section-title-animated {
+      font-size: 2.1em;
+      font-weight: 800;
+      color: #2196f3;
+      margin-bottom: 0.2em;
+      letter-spacing: -1px;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      background: linear-gradient(90deg, #e3f2fd 60%, #fff 100%);
+      padding: 0.3em 1em 0.3em 0.5em;
+      border-radius: 1.2em;
+      box-shadow: 0 2px 12px #2196f311;
+      animation: fadeInUp 1.2s;
+    }
+    .media-text-col .section-subtitle {
+      font-size: 1.18em;
+      color: #388e3c;
+      font-weight: 700;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.2px;
+      background: #e8f5e9;
+      display: inline-block;
+      padding: 0.25em 1em;
+      border-radius: 1em;
+      box-shadow: 0 1px 6px #43a04711;
+      margin-top: 0.2em;
+    }
+    .media-text-col .section-description {
+      font-size: 1.13em;
+      color: #444;
+      margin-bottom: 1.5em;
+      line-height: 1.8;
+      background: #f7fafc;
+      border-left: 5px solid #ffd600;
+      padding: 1.1em 1.3em;
+      border-radius: 1.1em;
+      box-shadow: 0 2px 12px #ffd60011;
+      margin-top: 1em;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -287,26 +330,51 @@
         Discover how HQ Power Rwanda transforms local peat resources into sustainable energy, powering communities and industries across Rwanda.
       </p>
       <div class="project-hero-image">
-        <img src="assets/project-hero.svg" alt="Project Illustration">
+        <img src="assets/Power_Plant.jpg" alt="Project Illustration">
       </div>
     </section>
 
     <!-- Beautiful Dropdowns (Jump Links) -->
     <div class="project-dropdowns">
       <div class="project-dropdown" data-target="peat-production">
-        <div class="icon"><i class="fas fa-mountain"></i></div>
+        <div class="icon">
+          <!-- Peat Production SVG Logo -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <ellipse cx="24" cy="38" rx="16" ry="6" fill="#8D6E63"/>
+            <path d="M24 38C24 24 10 22 10 10C18 18 24 10 24 2C24 10 30 18 38 10C38 22 24 24 24 38Z" fill="#43A047" stroke="#388E3C" stroke-width="2"/>
+            <ellipse cx="24" cy="38" rx="16" ry="6" fill="#8D6E63" fill-opacity="0.3"/>
+          </svg>
+        </div>
         <div class="project-dropdown-title">Peat Production</div>
         <div class="project-dropdown-desc">Sustainable harvesting and management of Rwanda’s peatlands.</div>
         <a class="jump-btn" href="#peat-production">Explore</a>
       </div>
       <div class="project-dropdown" data-target="power-plant">
-        <div class="icon"><i class="fas fa-industry"></i></div>
+        <div class="icon">
+          <!-- Power Plant SVG Logo -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="8" y="24" width="32" height="16" rx="3" fill="#1976D2"/>
+            <rect x="16" y="12" width="8" height="20" rx="2" fill="#FFD600" stroke="#FFA000" stroke-width="2"/>
+            <rect x="28" y="18" width="6" height="14" rx="1.5" fill="#B0BEC5"/>
+            <rect x="36" y="28" width="4" height="6" rx="1" fill="#B0BEC5"/>
+            <circle cx="24" cy="36" r="3" fill="#fff"/>
+            <rect x="20" y="36" width="8" height="2" rx="1" fill="#fff"/>
+          </svg>
+        </div>
         <div class="project-dropdown-title">Power Plant</div>
         <div class="project-dropdown-desc">State-of-the-art facility converting peat into clean energy.</div>
         <a class="jump-btn" href="#power-plant">Explore</a>
       </div>
       <div class="project-dropdown" data-target="gallery">
-        <div class="icon"><i class="fas fa-photo-video"></i></div>
+        <div class="icon">
+          <!-- Gallery SVG Logo -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="12" width="36" height="28" rx="4" fill="#2196F3"/>
+            <rect x="10" y="16" width="28" height="20" rx="2" fill="#fff"/>
+            <circle cx="18" cy="24" r="3" fill="#FFD600"/>
+            <path d="M12 36L20 28L28 36L36 24L38 36H10Z" fill="#90CAF9"/>
+          </svg>
+        </div>
         <div class="project-dropdown-title">Gallery</div>
         <div class="project-dropdown-desc">See our plant, peatlands, and community in action.</div>
         <a class="jump-btn" href="#gallery">Explore</a>
@@ -334,7 +402,7 @@
               <img src="assets/Peat 5.jpg" alt="Peat Storage Facility">
             </div>
             <div class="media-slide">
-              <img src="assets/Peat_harvesting 6.jpg" alt="Peatland Restoration Efforts">
+              <img src="assets/Peat_harvesting 7.jpg" alt="Peatland Restoration Efforts">
             </div>
             <div class="media-slide">
               <video src="assets/Peat_video.mp4" controls poster="assets/peat-video-thumb.jpg" playbackRate="2"></video>
@@ -347,7 +415,18 @@
           <div class="media-dots"></div>
         </div>
         <div class="media-text-col">
-          <h2 class="section-title-animated"><i class="fas fa-mountain"></i> Peat Production</h2>
+          <!-- Peat Production Section Title with Beautiful Logo -->
+          <h2 class="section-title-animated">
+            <span class="icon" style="display:inline-flex;vertical-align:middle;">
+              <!-- Peat Production SVG Logo -->
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+                <ellipse cx="24" cy="38" rx="16" ry="6" fill="#8D6E63"/>
+                <path d="M24 38C24 24 10 22 10 10C18 18 24 10 24 2C24 10 30 18 38 10C38 22 24 24 24 38Z" fill="#43A047" stroke="#388E3C" stroke-width="2"/>
+                <ellipse cx="24" cy="38" rx="16" ry="6" fill="#8D6E63" fill-opacity="0.3"/>
+              </svg>
+            </span>
+            Peat Production
+          </h2>
           <div class="section-subtitle">Sustainable Harvesting & Restoration</div>
           <div class="section-description">
             Our peat production process is designed for sustainability and minimal environmental impact.<br>
@@ -404,7 +483,21 @@
           <div class="media-dots"></div>
         </div>
         <div class="media-text-col">
-          <h2 class="section-title-animated"><i class="fas fa-industry"></i> Power Plant</h2>
+          <!-- Power Plant Section Title with Beautiful Logo -->
+          <h2 class="section-title-animated">
+            <span class="icon" style="display:inline-flex;vertical-align:middle;">
+              <!-- Power Plant SVG Logo -->
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+                <rect x="8" y="24" width="32" height="16" rx="3" fill="#1976D2"/>
+                <rect x="16" y="12" width="8" height="20" rx="2" fill="#FFD600" stroke="#FFA000" stroke-width="2"/>
+                <rect x="28" y="18" width="6" height="14" rx="1.5" fill="#B0BEC5"/>
+                <rect x="36" y="28" width="4" height="6" rx="1" fill="#B0BEC5"/>
+                <circle cx="24" cy="36" r="3" fill="#fff"/>
+                <rect x="20" y="36" width="8" height="2" rx="1" fill="#fff"/>
+              </svg>
+            </span>
+            Power Plant
+          </h2>
           <div class="section-subtitle">Modern, Clean Energy Generation</div>
           <div class="section-description">
             The HQ Power Plant is a state-of-the-art facility that transforms harvested peat into reliable electricity.<br>
@@ -427,14 +520,36 @@
         <div class="media-slider-col">
           <div class="media-window" id="gallery-media">
             <div class="media-slide active">
-              <img src="assets/gallery1.jpg" alt="Gallery 1">
+              <img src="assets/G1.jpg" alt="Gallery 1">
             </div>
             <div class="media-slide">
-              <img src="assets/gallery2.jpg" alt="Gallery 2">
+              <img src="assets/G2.jpg" alt="Gallery 2">
             </div>
+            <div class="media-slide">
+              <img src="assets/G3.jpg" alt="Gallery 3">
+            </div>
+            <div class="media-slide">
+              <img src="assets/G4.jpg" alt="Gallery 4">
+            </div>
+            <div class="media-slide">
+              <img src="assets/G5.jpg" alt="Gallery 5">
+            </div>
+            <div class="media-slide">
+              <img src="assets/G6.jpg" alt="Gallery 6">
+            </div>
+
+            <div class="media-slide">
+              <img src="assets/G7.jpg" alt="Gallery 7">
+            </div>
+            <div class="media-slide">
+              <img src="assets/G8.jpg" alt="Gallery 8">
+            </div>
+
+            <!-- Mommented out for later
             <div class="media-slide">
               <video src="assets/gallery-video.mp4" controls poster="assets/gallery-video-thumb.jpg"></video>
-            </div>
+            </div>  -->
+
           </div>
           <div class="media-controls">
             <button class="media-btn prev"><i class="fas fa-chevron-left"></i></button>
@@ -448,7 +563,19 @@
           </div>
         </div>
         <div class="media-text-col">
-          <h2 class="section-title-animated"><i class="fas fa-photo-video"></i> Gallery</h2>
+          <!-- Gallery Section Title with Beautiful Logo -->
+          <h2 class="section-title-animated">
+            <span class="icon" style="display:inline-flex;vertical-align:middle;">
+              <!-- Gallery SVG Logo -->
+              <svg width="38" height="38" viewBox="0 0 48 48" fill="none">
+                <rect x="6" y="12" width="36" height="28" rx="4" fill="#2196F3"/>
+                <rect x="10" y="16" width="28" height="20" rx="2" fill="#fff"/>
+                <circle cx="18" cy="24" r="3" fill="#FFD600"/>
+                <path d="M12 36L20 28L28 36L36 24L38 36H10Z" fill="#90CAF9"/>
+              </svg>
+            </span>
+            Gallery
+          </h2>
           <div class="section-subtitle">Our Work in Pictures</div>
           <div class="section-description">
             Explore highlights from our peatlands, power plant, and community engagement activities.
