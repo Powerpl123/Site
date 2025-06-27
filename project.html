@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Project | HQ Power Rwanda</title>
+  <link rel="icon"  type="image/png" href="Images/Logo.png">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Extra hero and card styles for this page */
+    .project-hero {
+      width: 100vw;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 2.5rem;
+      padding: 4rem 1rem 7rem 1rem;
+      margin: 0;
+      background: linear-gradient(120deg, #2196f3 70%, #ffd600 100%);
+      color: #fff;
+      border-radius: 0 0 3rem 3rem;
+      box-shadow: 0 8px 48px rgba(33,150,243,0.07);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 1.2s;
+    }
+    .project-hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -2px;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 12px rgba(33,150,243,0.13);
+      animation: fadeInUp 1.2s;
+    }
+    .project-hero p {
+      font-size: 1.45rem;
+      color: #fffde7;
+      margin-bottom: 2.2rem;
+      line-height: 1.6;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(33,150,243,0.10);
+      animation: fadeInUp 1.4s;
+    }
+    .project-hero-image img {
+      max-width: 440px;
+      width: 90vw;
+      border-radius: 2rem;
+      box-shadow: 0 4px 32px rgba(33,150,243,0.10);
+      margin: 0 auto;
+      display: block;
+      animation: popIn 1.5s;
+      background: #fff;
+      padding: 0.5em;
+    }
+    .project-dropdowns {
+      max-width: 1200px;
+      margin: -5rem auto 3rem auto;
+      display: flex;
+      gap: 2.5em;
+      justify-content: center;
+      flex-wrap: wrap;
+      z-index: 2;
+      position: relative;
+    }
+    .project-dropdown {
+      flex: 1 1 300px;
+      min-width: 260px;
+      background: #fff;
+      border-radius: 1.5em;
+      box-shadow: 0 4px 24px 0 rgba(33,150,243,0.13);
+      padding: 2.2em 1.5em 2em 1.5em;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.5em;
+      animation: fadeInUp 1.2s;
+    }
+    .project-dropdown:hover, .project-dropdown.active {
+      background: linear-gradient(90deg, #2196f3 70%, #ffd600 100%);
+      color: #fff;
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 12px 48px rgba(33,150,243,0.18);
+      z-index: 2;
+    }
+    .project-dropdown .icon {
+      font-size: 2.8em;
+      margin-bottom: 0.7em;
+      color: #2196f3;
+      transition: color 0.18s;
+      filter: drop-shadow(0 2px 8px #ffd60055);
+    }
+    .project-dropdown:hover .icon, .project-dropdown.active .icon {
+      color: #fffde7;
+    }
+    .project-dropdown-title {
+      font-weight: 800;
+      font-size: 1.35em;
+      margin-bottom: 0.3em;
+      letter-spacing: -1px;
+    }
+    .project-dropdown-desc {
+      font-size: 1.08em;
+      color: #444;
+      margin-bottom: 1.2em;
+      transition: color 0.18s;
+    }
+    .project-dropdown:hover .project-dropdown-desc, .project-dropdown.active .project-dropdown-desc {
+      color: #fffde7;
+    }
+    .project-dropdown .jump-btn {
+      display: inline-block;
+      margin-top: 1.2em;
+      padding: 0.6em 2em;
+      background: #2196f3;
+      color: #fff;
+      border: none;
+      border-radius: 1.5em;
+      font-size: 1.08em;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+    .project-dropdown:hover .jump-btn, .project-dropdown.active .jump-btn {
+      background: #ffd600;
+      color: #2196f3;
+      box-shadow: 0 4px 16px rgba(33,150,243,0.13);
+      text-decoration: none;
+    }
+    @media (max-width: 1100px) {
+      .project-dropdowns { flex-direction: column; gap: 1.2em; }
+      .project-dropdown { min-width: 0; }
+      .project-hero h1 { font-size: 2.1rem; }
+      .project-hero-image img { max-width: 98vw; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0;}
+      100% { transform: scale(1); opacity: 1;}
+    }
+    .media-window {
+      width: 100%;
+      max-width: 900px;
+      min-width: 350px;
+      aspect-ratio: 16/9;
+      border-radius: 2em;
+      box-shadow: 0 8px 32px rgba(33,150,243,0.13);
+      background: #fff;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .media-slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 0; top: 0;
+      transition: opacity 0.6s;
+    }
+    .media-slide.active {
+      display: flex;
+      position: relative;
+      opacity: 1;
+      z-index: 2;
+      animation: fadeInUp 1s;
+    }
+    .media-slide img, .media-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2em;
+      background: #e3f2fd;
+      box-shadow: 0 4px 24px rgba(33,150,243,0.10);
+    }
+    .media-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      margin-top: 1.2em;
+    }
+    .media-btn {
+      background: rgba(33,150,243,0.92);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      font-size: 2em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.13);
+      transition: background 0.18s, transform 0.18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-btn:hover {
+      background: #ffd600;
+      color: #2196f3;
+      transform: scale(1.12);
+    }
+    .media-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.9em;
+      margin: 1.2em 0 0.7em 0;
+    }
+    .media-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #e3f2fd;
+      border: 2px solid #2196f3;
+      cursor: pointer;
+      transition: background 0.18s, border 0.18s;
+    }
+    .media-dot.active {
+      background: #ffd600;
+      border: 2px solid #ffd600;
+      box-shadow: 0 0 12px #ffd60088;
+    }
+    @media (max-width: 1200px) {
+      .media-window { max-width: 98vw; border-radius: 1.2em; }
+    }
+    @media (max-width: 700px) {
+      .media-window { max-width: 99vw; border-radius: 1em; }
+      .media-btn { width: 38px; height: 38px; font-size: 1.3em; }
+      .media-dot { width: 12px; height: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="glass-nav">
+    <a href="index.html" class="logo">
+      <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
+    </a>
+    <ul class="nav-links-horizontal" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown who-dropdown">
+        <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
+        <div class="dropdown-content">
+          <a href="about.html#management" class="who-link" data-tab="management">Management</a>
+          <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Shareholders</a>
+          <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
+          <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
+        </div>
+      </li>
+      <li class="dropdown project-dropdown-nav">
+        <a href="project.html" class="dropbtn">The Project &#9662;</a>
+        <div class="dropdown-content">
+          <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
+          <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
+          <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+        </div>
+      </li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <h1>The Project</h1>
+      <p>
+        Discover how HQ Power Rwanda transforms local peat resources into sustainable energy, powering communities and industries across Rwanda.
+      </p>
+      <div class="project-hero-image">
+        <img src="assets/project-hero.svg" alt="Project Illustration">
+      </div>
+    </section>
+
+    <!-- Beautiful Dropdowns (Jump Links) -->
+    <div class="project-dropdowns">
+      <div class="project-dropdown" data-target="peat-production">
+        <div class="icon"><i class="fas fa-mountain"></i></div>
+        <div class="project-dropdown-title">Peat Production</div>
+        <div class="project-dropdown-desc">Sustainable harvesting and management of Rwanda’s peatlands.</div>
+        <a class="jump-btn" href="#peat-production">Explore</a>
+      </div>
+      <div class="project-dropdown" data-target="power-plant">
+        <div class="icon"><i class="fas fa-industry"></i></div>
+        <div class="project-dropdown-title">Power Plant</div>
+        <div class="project-dropdown-desc">State-of-the-art facility converting peat into clean energy.</div>
+        <a class="jump-btn" href="#power-plant">Explore</a>
+      </div>
+      <div class="project-dropdown" data-target="gallery">
+        <div class="icon"><i class="fas fa-photo-video"></i></div>
+        <div class="project-dropdown-title">Gallery</div>
+        <div class="project-dropdown-desc">See our plant, peatlands, and community in action.</div>
+        <a class="jump-btn" href="#gallery">Explore</a>
+      </div>
+    </div>
+
+    <!-- Peat Production Section -->
+    <section class="project-section media-fit" id="peat-production">
+      <div class="media-flex">
+        <div class="media-slider-col">
+          <div class="media-window" id="peat-media">
+            <div class="media-slide active">
+              <img src="assets/peat1.jpg" alt="Peatland Overview">
+            </div>
+            <div class="media-slide">
+              <img src="assets/peat2.jpg" alt="Peat Extraction Machinery">
+            </div>
+            <div class="media-slide">
+              <video src="assets/peat-video.mp4" controls poster="assets/peat-video-thumb.jpg"></video>
+            </div>
+          </div>
+          <div class="media-controls">
+            <button class="media-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="media-btn next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="media-dots"></div>
+        </div>
+        <div class="media-text-col">
+          <h2 class="section-title-animated"><i class="fas fa-mountain"></i> Peat Production</h2>
+          <div class="section-subtitle">Sustainable Harvesting & Restoration</div>
+          <div class="section-description">
+            Our peat production process is designed for sustainability and minimal environmental impact.<br>
+            Explore real photos and a video of our teams, tools, and machines at work in Rwanda’s peatlands.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Divider SVG -->
+    <div style="width:100%;overflow:hidden;line-height:0;">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#e3f2fd"/>
+      </svg>
+    </div>
+
+    <!-- Power Plant Section -->
+    <section class="project-section media-fit" id="power-plant">
+      <div class="media-flex reverse">
+        <div class="media-slider-col">
+          <div class="media-window" id="plant-media">
+            <div class="media-slide active">
+              <img src="assets/plant1.jpg" alt="Power Plant Exterior">
+            </div>
+            <div class="media-slide">
+              <img src="assets/plant2.jpg" alt="Power Plant Interior">
+            </div>
+            <div class="media-slide">
+              <video src="assets/power-plant.mp4" controls poster="assets/plant-video-thumb.jpg"></video>
+            </div>
+          </div>
+          <div class="media-controls">
+            <button class="media-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="media-btn next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="media-dots"></div>
+        </div>
+        <div class="media-text-col">
+          <h2 class="section-title-animated"><i class="fas fa-industry"></i> Power Plant</h2>
+          <div class="section-subtitle">Modern, Clean Energy Generation</div>
+          <div class="section-description">
+            The HQ Power Plant is a state-of-the-art facility that transforms harvested peat into reliable electricity.<br>
+            Browse our gallery and video to see the plant and its technology in action.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Divider SVG -->
+    <div style="width:100%;overflow:hidden;line-height:0;">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#e3f2fd"/>
+      </svg>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="project-section media-fit" id="gallery">
+      <div class="media-flex">
+        <div class="media-slider-col">
+          <div class="media-window" id="gallery-media">
+            <div class="media-slide active">
+              <img src="assets/gallery1.jpg" alt="Gallery 1">
+            </div>
+            <div class="media-slide">
+              <img src="assets/gallery2.jpg" alt="Gallery 2">
+            </div>
+            <div class="media-slide">
+              <video src="assets/gallery-video.mp4" controls poster="assets/gallery-video-thumb.jpg"></video>
+            </div>
+          </div>
+          <div class="media-controls">
+            <button class="media-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="media-btn next"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="media-dots"></div>
+          <div style="text-align:center;margin-top:2em;">
+            <a class="see-gallery-btn" href="gallery.html">
+              <i class="fas fa-images"></i> See Full Gallery
+            </a>
+          </div>
+        </div>
+        <div class="media-text-col">
+          <h2 class="section-title-animated"><i class="fas fa-photo-video"></i> Gallery</h2>
+          <div class="section-subtitle">Our Work in Pictures</div>
+          <div class="section-description">
+            Explore highlights from our peatlands, power plant, and community engagement activities.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>&copy; 2025 HQ Power Rwanda. All rights reserved.</p>
+  </footer>
+  <a href="contact.html" class="floating-cta-btn">
+    <i class="fas fa-paper-plane"></i> Contact Us
+  </a>
+  <script>
+    // --- Slider Logic (Reusable for all sliders) ---
+    function initSlider(sliderId) {
+      const slider = document.getElementById(sliderId);
+      if (!slider) return;
+      const track = slider.querySelector('.slider-track');
+      const slides = Array.from(track.children);
+      const prevBtn = slider.querySelector('.slider-btn.prev');
+      const nextBtn = slider.querySelector('.slider-btn.next');
+      const dotsContainer = slider.querySelector('.slider-dots');
+      let current = 0;
+
+      // Create dots
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = 'slider-dot' + (idx === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(idx));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = Array.from(dotsContainer.children);
+
+      function goTo(idx) {
+        current = (idx + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+      function prev() { goTo(current - 1); }
+      function next() { goTo(current + 1); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      // Swipe support for mobile
+      let startX = null;
+      track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+      track.addEventListener('touchend', e => {
+        if (startX === null) return;
+        let dx = e.changedTouches[0].clientX - startX;
+        if (dx > 50) prev();
+        else if (dx < -50) next();
+        startX = null;
+      });
+
+      // Keyboard navigation
+      slider.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+      });
+
+      // Go to first slide on load
+      goTo(0);
+    }
+
+    // Initialize all sliders
+    window.addEventListener('DOMContentLoaded', function() {
+      ['peat-slider', 'plant-slider', 'gallery-slider'].forEach(initSlider);
+
+      // Navigation dropdown smooth scroll
+      document.querySelectorAll('.project-nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (window.location.pathname.endsWith('project.html')) {
+            e.preventDefault();
+            const target = link.getAttribute('data-target');
+            if (target && document.getElementById(target)) {
+              document.getElementById(target).scrollIntoView({behavior: 'smooth', block: 'start'});
+              document.querySelectorAll('.project-dropdown').forEach(d => d.classList.remove('active'));
+              const drop = document.querySelector('.project-dropdown[data-target="' + target + '"]');
+              if (drop) drop.classList.add('active');
+            }
+          }
+        });
+      });
+    });
+
+    function initMediaSlider(mediaId, interval = 5000) {
+      const container = document.getElementById(mediaId);
+      if (!container) return;
+      const slides = Array.from(container.querySelectorAll('.media-slide'));
+      const prevBtn = container.parentElement.querySelector('.media-btn.prev');
+      const nextBtn = container.parentElement.querySelector('.media-btn.next');
+      const dotsContainer = container.parentElement.querySelector('.media-dots');
+      let current = 0, timer = null;
+
+      // Create dots
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = 'media-dot' + (idx === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(idx, true));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = Array.from(dotsContainer.children);
+
+      function show(idx) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === idx);
+          // Pause all videos except the active one
+          if (slide.querySelector('video')) {
+            slide.querySelector('video').pause();
+            slide.querySelector('video').currentTime = 0;
+          }
+        });
+        // Play video if active slide is video
+        const activeSlide = slides[idx];
+        const video = activeSlide.querySelector('video');
+        if (video) video.play();
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+      function goTo(idx, manual = false) {
+        current = (idx + slides.length) % slides.length;
+        show(current);
+        if (timer) clearInterval(timer);
+        if (!manual) autoPlay();
+      }
+      function prev() { goTo(current - 1, true); }
+      function next() { goTo(current + 1, true); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      function autoPlay() {
+        timer = setInterval(() => {
+          goTo(current + 1);
+        }, interval);
+      }
+      show(0);
+      autoPlay();
+
+      // Pause autoplay on hover/focus
+      container.addEventListener('mouseenter', () => timer && clearInterval(timer));
+      container.addEventListener('mouseleave', autoPlay);
+      container.addEventListener('focusin', () => timer && clearInterval(timer));
+      container.addEventListener('focusout', autoPlay);
+    }
+
+    // Initialize all media sliders
+    window.addEventListener('DOMContentLoaded', function() {
+      initMediaSlider('peat-media');
+      initMediaSlider('plant-media');
+      initMediaSlider('gallery-media');
+    });
+  </script>
+</body>
+</html>

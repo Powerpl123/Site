@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | HQ Power Rwanda</title>
+  <link rel="icon"  type="image/png"  href="Images/Logo.png">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Universal Navigation Bar: Place just after <body> on every page -->
+  <nav class="navbar-horizontal glass-nav">
+    <a href="index.html" class="logo">
+      <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
+    </a>
+    <ul class="nav-links-horizontal" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown who-dropdown">
+        <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
+        <div class="dropdown-content">
+          <a href="about.html#management" class="who-link" data-tab="management">Management</a>
+          <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
+          <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
+          <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
+        </div>
+      </li>
+      <li class="dropdown project-dropdown-nav">
+        <a href="project.html" class="dropbtn">The Project &#9662;</a>
+        <div class="dropdown-content">
+          <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
+          <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
+          <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+        </div>
+      </li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+  </nav>
+
+  <header>
+ </header>
+  <main class="main-content">
+    <section class="hero animate-fade-in">
+      <div class="hero-content">
+        <h1><span class="highlight">Contact Us</span></h1>
+        <p>We’d love to hear from you. Reach out for inquiries, partnerships, or plant visits.</p>
+      </div>
+    </section>
+    <section class="contact-section">
+      <form class="contact-form" action="mailto:info@hqpower.rw" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="Company" placeholder="Company" required>
+        <input type="number" name="phone" placeholder="Your Phone Number" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="discover-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+      <div class="contact-info">
+        <h3>HQ Power Rwanda</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Gisagara, Rwanda</p>
+        <p><i class="fas fa-envelope"></i> info@hqpower-rwanda.com</p>
+        <p><i class="fas fa-phone"></i> +250 788 319 716</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>&copy; 2025 HQ Power Rwanda. All rights reserved.</p>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

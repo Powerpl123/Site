@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | HQ Power Rwanda</title>
+  <link rel="icon" type="image/png" href="Images/Logo.png">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #e3f2fd 60%, #fffde7 100%);
+      min-height: 100vh;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar-horizontal {
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 12px rgba(33,150,243,0.07);
+      padding: 0.7em 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar-horizontal .logo img {
+      height: 48px;
+      margin-left: 1.5em;
+    }
+    .nav-links-horizontal {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 1.5em;
+      float: right;
+      margin-right: 2em;
+    }
+    .nav-links-horizontal li a, .nav-links-horizontal .dropbtn {
+      color: #1976d2;
+      font-weight: 700;
+      font-size: 1.08em;
+      text-decoration: none;
+      padding: 0.5em 1.1em;
+      border-radius: 1.2em;
+      transition: background 0.18s, color 0.18s;
+    }
+    .nav-links-horizontal li a:hover, .nav-links-horizontal .dropbtn:hover {
+      background: #e3f2fd;
+      color: #2196f3;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      min-width: 180px;
+      box-shadow: 0 4px 16px rgba(33,150,243,0.10);
+      border-radius: 1em;
+      z-index: 10;
+      margin-top: 0.5em;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      color: #1976d2;
+      padding: 0.7em 1.2em;
+      text-decoration: none;
+      display: block;
+      border-radius: 1em;
+      font-weight: 600;
+      font-size: 1em;
+    }
+    .dropdown-content a:hover {
+      background: #e3f2fd;
+      color: #2196f3;
+    }
+    .about-hero-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 2.5rem auto 2.5rem auto;
+      padding: 2.5rem 2rem 2rem 2rem;
+      box-shadow: 0 4px 16px rgba(33,150,243,0.08);
+      border-radius: 1.5em;
+      background: linear-gradient(120deg, #2196f3 70%, #ffd600 100%);
+      color: #fff;
+      gap: 2.5em;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero-box::before {
+      content: "";
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,0.13);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .about-hero-text {
+      flex: 1.2;
+      padding-right: 2rem;
+      z-index: 1;
+    }
+    .about-hero-text h1 {
+      font-size: 2.7rem;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+      color: #fff;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 12px rgba(33,150,243,0.13);
+    }
+    .about-hero-text p {
+      font-size: 1.22rem;
+      color: #fffde7;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(33,150,243,0.10);
+    }
+    .about-hero-image {
+      flex: 1;
+      text-align: center;
+      z-index: 1;
+    }
+    .about-hero-image img {
+      max-width: 95%;
+      height: auto;
+      border-radius: 1.2em;
+      box-shadow: 0 4px 24px 0 rgba(33,150,243,0.13);
+      background: #fff;
+      padding: 0.5em;
+    }
+    .about-values {
+      max-width: 1200px;
+      margin: 2.5rem auto 2rem auto;
+      background: #fff;
+      border-radius: 1.5em;
+      box-shadow: 0 2px 12px 0 rgba(33,150,243,0.10);
+      padding: 2.5em 1.5em;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-values::before {
+      content: "";
+      position: absolute;
+      left: -60px; top: -60px;
+      width: 180px; height: 180px;
+      background: rgba(33,150,243,0.07);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .about-values h2 {
+      color: #2196f3;
+      font-size: 2.1em;
+      margin-bottom: 1em;
+      font-weight: 700;
+      z-index: 1;
+      position: relative;
+    }
+    .values-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      justify-content: center;
+      margin-top: 1.5em;
+      z-index: 1;
+      position: relative;
+    }
+    .value-card {
+      background: #e3f2fd;
+      border-radius: 1em;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+      padding: 1.5em 1.2em;
+      min-width: 200px;
+      max-width: 260px;
+      text-align: center;
+      margin-bottom: 1em;
+      transition: transform 0.18s, box-shadow 0.18s;
+      border: 2px solid #fff;
+    }
+    .value-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 8px 32px rgba(33,150,243,0.18);
+      border: 2px solid #ffd600;
+    }
+    .value-icon {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #2196f3;
+    }
+    .value-title {
+      font-weight: 700;
+      color: #2196f3;
+      margin-bottom: 0.3em;
+      font-size: 1.1em;
+    }
+    .value-desc {
+      color: #444;
+      font-size: 0.98em;
+    }
+    .about-tabs {
+      max-width: 1200px;
+      margin: 2.5rem auto 2rem auto;
+      background: #fff;
+      border-radius: 1.5em;
+      box-shadow: 0 2px 12px 0 rgba(33,150,243,0.10);
+      padding: 2.5em 1.5em;
+      position: relative;
+      overflow: hidden;
+    }
+    .tab-header {
+      display: flex;
+      justify-content: center;
+      gap: 1.5em;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: #e3f2fd;
+      color: #1976d2;
+      border: none;
+      border-radius: 2em;
+      padding: 0.7em 2.2em;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.07);
+      outline: none;
+      margin-bottom: 0.5em;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: linear-gradient(90deg, #2196f3 70%, #ffd600 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(33,150,243,0.13);
+    }
+    .tab-content {
+      display: none;
+      animation: fadeInUp 0.7s;
+      margin-top: 1.5em;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tab-content h3 {
+      color: #1976d2;
+      font-size: 1.5em;
+      margin-bottom: 1.2em;
+      font-weight: 700;
+      text-align: left;
+    }
+    .tab-content > h4 {
+      color: #2196f3;
+      margin-top: 2em;
+      font-size: 1.15em;
+      font-weight: 700;
+      text-align: left;
+    }
+    .profile-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2em;
+      margin: 2em 0 2em 0;
+    }
+    .profile-horizontal-card {
+      display: flex;
+      align-items: flex-start;
+      background: linear-gradient(90deg, #e3f2fd 80%, #fffde7 100%);
+      border-radius: 1.2em;
+      box-shadow: 0 4px 24px 0 rgba(33,150,243,0.10);
+      padding: 1.5em 2em;
+      gap: 2em;
+      transition: box-shadow 0.18s, transform 0.18s;
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      border: 2px solid #fff;
+    }
+    .profile-horizontal-card:hover {
+      box-shadow: 0 8px 32px rgba(33,150,243,0.18);
+      transform: translateY(-4px) scale(1.02);
+      border: 2px solid #ffd600;
+    }
+    .profile-horizontal-logo {
+      flex: 0 0 90px;
+      width: 90px;
+      height: 90px;
+      background: #fff;
+      border-radius: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.10);
+      margin-right: 1.5em;
+      overflow: hidden;
+      border: 2px solid #e3f2fd;
+    }
+    .profile-horizontal-logo img {
+      max-width: 80px;
+      max-height: 80px;
+      object-fit: contain;
+    }
+    .profile-horizontal-content {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .profile-horizontal-title {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #2196f3;
+      margin-bottom: 0.2em;
+      letter-spacing: -0.5px;
+    }
+    .profile-horizontal-role {
+      color: #1976d2;
+      font-size: 1em;
+      font-weight: 600;
+      margin-bottom: 0.5em;
+    }
+    .profile-horizontal-desc {
+      color: #444;
+      font-size: 1.05em;
+      margin-bottom: 0.7em;
+      line-height: 1.7;
+      text-align: left;
+    }
+    .profile-horizontal-link, .learn-more-btn {
+      display: inline-block;
+      margin-top: 0.2em;
+      font-size: 1em;
+      color: #1976d2;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: color 0.18s, background 0.18s, box-shadow 0.18s;
+      border-radius: 1.2em;
+      padding: 0.3em 1em;
+      background: #e3f2fd;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(33,150,243,0.07);
+    }
+    .profile-horizontal-link:hover, .learn-more-btn:hover {
+      color: #fffde7;
+      background: linear-gradient(90deg, #2196f3 70%, #ffd600 100%);
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(33,150,243,0.13);
+    }
+    @media (max-width: 900px) {
+      .about-hero-box { flex-direction: column; gap: 1.5em; padding: 1.2em 0.7em; }
+      .about-hero-text { padding-right: 0; }
+      .about-values, .about-tabs { padding: 1.2em 0.7em; }
+      .values-list { flex-direction: column; gap: 1em; }
+      .profile-horizontal-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.2em 0.7em;
+        gap: 1em;
+        max-width: 98vw;
+      }
+      .profile-horizontal-logo {
+        margin-right: 0;
+        margin-bottom: 0.7em;
+      }
+      .profile-horizontal-content {
+        width: 100%;
+        text-align: center;
+      }
+      .profile-horizontal-desc {
+        text-align: center;
+      }
+      .tab-content h3, .tab-content > h4 {
+        text-align: center;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+    footer {
+      background: #e3f2fd;
+      color: #1976d2;
+      text-align: center;
+      padding: 2em 0 1em 0;
+      margin-top: 3em;
+      border-radius: 1.5em 1.5em 0 0;
+      box-shadow: 0 -2px 12px rgba(33,150,243,0.07);
+    }
+    .footer-links {
+      margin-bottom: 1em;
+    }
+    .footer-links a {
+      color: #1976d2;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.18s;
+    }
+    .footer-links a:hover {
+      color: #ffd600;
+      text-decoration: underline;
+    }
+    /* Add or update these styles in your <style> block */
+.leadership-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5em;
+  margin-bottom: 2.5em;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.leadership-profiles .leader-card {
+  background: #fff;
+  border-radius: 1.5em;
+  box-shadow: 0 4px 24px rgba(33,150,243,0.13);
+  padding: 2em 2em 1.5em 2em;
+  width: 320px;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+@media (max-width: 1400px) {
+  .leadership-profiles { max-width: 1000px; }
+}
+@media (max-width: 1100px) {
+  .leadership-profiles { max-width: 700px; }
+}
+@media (max-width: 900px) {
+  .leadership-profiles { max-width: 98vw; gap: 1em; }
+  .leadership-profiles .leader-card { width: 98vw; }
+}
+  </style>
+</head>
+<body>
+  <!-- Universal Navigation Bar -->
+  <nav class="glass-nav" style="background: #21a1ff;">
+  <a href="index.html" class="logo">
+    <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
+  </a>
+  <ul class="nav-links-horizontal" id="navLinks" style="margin: 0; padding: 0;">
+    <li><a href="index.html" style="color: #fff; font-weight: 500;">Home</a></li>
+    <li class="dropdown who-dropdown" style="position: relative;">
+      <a href="about.html" class="dropbtn" style="background: #ffd600; color: #1976d2; border-radius: 1em; font-weight: 600; padding: 0.6em 2em;">Who We Are <span style="font-size:1.1em;">&#9662;</span></a>
+      <div class="dropdown-content" style="display: none; position: absolute; left: 0; top: 110%; background: #fff; min-width: 220px; border-radius: 1.5em; box-shadow: 0 8px 32px rgba(33,150,243,0.13); padding: 1em 0;">
+        <a href="about.html#management" class="who-link" data-tab="management" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Management</a>
+        <a href="about.html#shareholders" class="who-link" data-tab="shareholders" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Shareholders</a>
+        <a href="about.html#lenders" class="who-link" data-tab="lenders" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Lenders</a>
+        <a href="about.html#partners" class="who-link" data-tab="partners" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Partners</a>
+      </div>
+    </li>
+    <li class="dropdown project-dropdown-nav" style="position: relative;">
+      <a href="project.html" class="dropbtn" style="color: #fff; font-weight: 500;">The Project <span style="font-size:1.1em;">&#9662;</span></a>
+      <div class="dropdown-content" style="display: none; position: absolute; left: 0; top: 110%; background: #fff; min-width: 220px; border-radius: 1.5em; box-shadow: 0 8px 32px rgba(33,150,243,0.13); padding: 1em 0;">
+        <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Peat Production</a>
+        <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Power Plant</a>
+        <a href="project.html#gallery" class="project-nav-link" data-target="gallery" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Gallery</a>
+      </div>
+    </li>
+    <li><a href="careers.html" style="color: #fff; font-weight: 500;">Careers</a></li>
+    <li><a href="contact.html" style="color: #fff; font-weight: 500;">Contact Us</a></li>
+    <li><a href="gallery.html" style="color: #fff; font-weight: 500;">Gallery</a></li>
+  </ul>
+  <div class="menu-toggle" id="menuToggle" style="color: #fff;">&#9776;</div>
+</nav>
+<script>
+  // Dropdown hover logic for desktop
+  document.querySelectorAll('.dropdown').forEach(function(drop){
+    drop.addEventListener('mouseenter', function(){
+      this.querySelector('.dropdown-content').style.display = 'block';
+    });
+    drop.addEventListener('mouseleave', function(){
+      this.querySelector('.dropdown-content').style.display = 'none';
+    });
+  });
+</script>
+
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="about-hero-box">
+      <div class="about-hero-text">
+        <h1><span class="highlight">About HQ Power Rwanda</span></h1>
+        <p>
+          HQ Power Rwanda is a leader in sustainable peat energy, committed to powering Rwanda’s growth and protecting our environment.
+        </p>
+      </div>
+      <div class="about-hero-image sticky-about-img">
+        <img src="assets/about-energy.svg" alt="About Illustration">
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="about-values">
+      <h2>Our Mission & Values</h2>
+      <div class="values-list">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-leaf"></i></div>
+          <div class="value-title">Sustainability</div>
+          <div class="value-desc">We are dedicated to sustainable energy production and environmental stewardship.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-users"></i></div>
+          <div class="value-title">Community</div>
+          <div class="value-desc">Empowering local communities and creating jobs for Rwandans.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-bolt"></i></div>
+          <div class="value-title">Innovation</div>
+          <div class="value-desc">Using modern technology for efficient, reliable, and clean power generation.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-handshake"></i></div>
+          <div class="value-title">Partnership</div>
+          <div class="value-desc">Collaborating with global and local partners for Rwanda’s energy future.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-award"></i></div>
+          <div class="value-title">Excellence</div>
+          <div class="value-desc">Striving for the highest standards in every aspect of our work.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabbed Section for Management, Shareholders, Lenders, Partners -->
+    <div class="about-tabs" id="about-tabs">
+      <div class="tab-header">
+        <button class="tab-btn active" data-tab="management" id="tab-management"><i class="fas fa-users-cog"></i> Management</button>
+        <button class="tab-btn" data-tab="shareholders" id="tab-shareholders"><i class="fas fa-handshake"></i> Shareholders</button>
+        <button class="tab-btn" data-tab="lenders" id="tab-lenders"><i class="fas fa-university"></i> Lenders</button>
+        <button class="tab-btn" data-tab="partners" id="tab-partners"><i class="fas fa-globe"></i> Partners</button>
+      </div>
+      <!-- Management Tab -->
+      <div class="tab-content active" id="management">
+        <h3>Our Leadership Team</h3>
+        <p style="text-align:center; font-size:1.15em; color:#1976d2; margin-bottom:2em;">
+          The HQ Power management team comprises experienced professionals from diverse energy, engineering, and environmental backgrounds.
+        </p>
+        <div class="leadership-profiles">
+  <!-- CEO -->
+  <div class="leader-card">
+    <img src="Images/CEO.jpeg" alt="CEO" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 16px rgba(33,150,243,0.10); margin-bottom: 1em; border: 5px solid #ffd600;">
+    <div style="font-size: 1.35em; font-weight: 700; color: #2196f3; margin-bottom: 0.2em;">HAKAN</div>
+    <div style="color: #1976d2; font-size: 1.15em; font-weight: 600; margin-bottom: 0.5em;">Chief Executive Officer</div>
+    <div style="color: #444; font-size: 1.08em; margin-bottom: 0.7em; line-height: 1.7;">
+      Visionary leader with 10+ years in sustainable energy.<br>
+      <span style="color:#bbb;">[Add bio here]</span>
+    </div>
+  </div>
+  <!-- COO -->
+  <div class="leader-card">
+    <img src="assets/management2.jpg" alt="COO" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 16px rgba(33,150,243,0.10); margin-bottom: 1em; border: 5px solid #ffd600;">
+    <div style="font-size: 1.35em; font-weight: 700; color: #2196f3; margin-bottom: 0.2em;">Christophe Besnier</div>
+    <div style="color: #1976d2; font-size: 1.15em; font-weight: 600; margin-bottom: 0.5em;">General Manager</div>
+    <div style="color: #444; font-size: 1.08em; margin-bottom: 0.7em; line-height: 1.7;">
+      N/A<br>
+      <span style="color:#bbb;">[Add bio here]</span>
+    </div>
+  </div>
+  <!-- CFO -->
+  <div class="leader-card">
+    <img src="assets/management3.jpg" alt="CFO" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 16px rgba(33,150,243,0.10); margin-bottom: 1em; border: 5px solid #ffd600;">
+    <div style="font-size: 1.35em; font-weight: 700; color: #2196f3; margin-bottom: 0.2em;">N/A</div>
+    <div style="color: #1976d2; font-size: 1.15em; font-weight: 600; margin-bottom: 0.5em;">Chief Financial Officer</div>
+    <div style="color: #444; font-size: 1.08em; margin-bottom: 0.7em; line-height: 1.7;">
+      Finance specialist with a passion for green projects.<br>
+      <span style="color:#bbb;">[Add bio here]</span>
+    </div>
+  </div>
+  <!-- CTO -->
+  <div class="leader-card">
+    <img src="assets/management4.jpg" alt="CTO" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 16px rgba(33,150,243,0.10); margin-bottom: 1em; border: 5px solid #ffd600;">
+    <div style="font-size: 1.35em; font-weight: 700; color: #2196f3; margin-bottom: 0.2em;">N/A</div>
+    <div style="color: #1976d2; font-size: 1.15em; font-weight: 600; margin-bottom: 0.5em;">Chief Technology Officer</div>
+    <div style="color: #444; font-size: 1.08em; margin-bottom: 0.7em; line-height: 1.7;">
+      Innovator in renewable energy technologies.<br>
+      <span style="color:#bbb;">[Add bio here]</span>
+    </div>
+  </div>
+</div>
+      </div>
+      <!-- Shareholders Tab -->
+      <div class="tab-content" id="shareholders">
+        <h3>Our Shareholders</h3>
+        <div class="profile-list">
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/hakan.jpg" alt="HAKAN Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">HAKAN</div>
+              <div class="profile-horizontal-role">Shareholder</div>
+              <div class="profile-horizontal-desc">
+                Established in Istanbul, Turkey in 1983, Hakan is a leading importer of Russian high quality coal. After the year 2005, Hakan started to diversify its activity in the energy sector. The group obtained in 2010 an electricity generator licence for a coal-fired power plant in Turkey. An affiliate company within the group exists in serving in the installation, engineering and project development of solar energy projects in Turkey. In its growth path Hakan has looked beyond the current region of operations and entered into a Concession Agreement with the Government of Rwanda to harvest peat from the land and develop and operate a 100 MW peat-fired power plant under a 30 years Agreement.
+              </div>
+              <a class="profile-horizontal-link" href="http://www.hakanas.com/eng" target="_blank" rel="noopener">hakanas.com/eng</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/quantum.jpg" alt="Quantum Power Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">QUANTUM POWER</div>
+              <div class="profile-horizontal-role">Shareholder</div>
+              <div class="profile-horizontal-desc">
+                Quantum Power is an investment platform focusing on power, energy, natural resources and related infrastructure in sub-Saharan Africa. They invest directly and actively in African assets and companies, capitalising on the continent’s substantial economic growth and infrastructure requirements. Their primarily focus is on power projects, investing at any point in the capital structure and at any stage of a project’s life, from development to operation. Its investment team consists of industry veterans with decades of operational and commercial experience around the world, together with local management teams based in five African countries. Quantum Power applies this unique combination of African and global industry expertise to active long-term investment in an African industrial conglomerate of scale.
+              </div>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/logothemis.jpg" alt="THEMIS Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">THEMIS</div>
+              <div class="profile-horizontal-role">Shareholder</div>
+              <div class="profile-horizontal-desc">
+                THEMIS is a Project development company, whose main objective is the structuring and financing of economic (power and transport) and industrial (heavy industries) infrastructure assets. THEMIS operates in Africa, with a specific focus on transitioning countries in the Sub Saharan Africa region. By uncovering opportunities in frontier markets, employing a locally-minded approach, and acting through a team of regionally-proven and trusted professionals, our objective is to maximize investor returns.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Lenders Tab -->
+      <div class="tab-content" id="lenders">
+        <h3>Our Lenders</h3>
+        <div class="profile-list">
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/afc.jpg" alt="AFC Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">AFC</div>
+              <div class="profile-horizontal-role">Africa Finance Group</div>
+              <div class="profile-horizontal-desc">
+                AFC is acting as mandated lead arranger for the senior debt and will mobilize circa $200,000,000 of senior debt. AFC is an international organization established by treaty between sovereign states. Current member nations are Nigeria, Guinea-Bissau, Sierra Leone, The Gambia, Liberia and Guinea. AFC’s mission is to help address Africa’s infrastructure development needs while seeking a competitive return on capital for its shareholders. Since it began operations in 2007, AFC has raised US$1.1 billion in fully paid-in equity capital. Its shareholding base is private sector majority owned (57.5 percent). AFC is driven by a diverse team of experienced professionals from investment banking, engineering and other backgrounds. Capitalized with US$1.1 billion, AFC operates a dollar denominated balance sheet, and essentially provides financing in this currency.
+              </div>
+              <a class="profile-horizontal-link" href="http://www.africafc.org/" target="_blank" rel="noopener">africafc.org</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/Finfund.jpg" alt="Finnfund Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Finnish Fund for Industrial Cooperation Ltd</div>
+              <div class="profile-horizontal-role">Finnfund</div>
+              <div class="profile-horizontal-desc">
+                Finnish Fund for Industrial Cooperation Ltd. (“Finnfund”) is also acting as mandated lead arranger for the mezzanine debt. Finnfund is a Finnish development finance company that provides long-term risk capital for private projects in developing countries. Apart from co-investing with Finnish companies, Finnfund can finance ventures that use Finnish technology, cooperate with Finnish partners on a long-term basis or generate major environmental or social benefits. Finnfund shares risks by providing long-term financing for promising projects in challenging markets, where commercial financing is hard to obtain. Finnfund’s funding can be in the form of equity capital, mezzanine financing or long-term investment loans. Finnfund is owned by the State of Finland (93.4%), Finnvera (6.5%) and the Confederation of Finnish Industries (0.1%).
+              </div>
+              <a class="profile-horizontal-link" href="http://www.finnfund.fi/" target="_blank" rel="noopener">finnfund.fi</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/indiaexim.png" alt="EXIM Bank Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Export-Import Bank of India</div>
+              <div class="profile-horizontal-role">EXIM Bank</div>
+              <div class="profile-horizontal-desc">
+                Established by the Government of India in 1982, the Export-Import Bank of India (“EXIM Bank”) serves as a growth engine for industries and SMEs through a wide range of products and services. This includes import of technology and export product development, export production, export marketing, pre-shipment and post-shipment and overseas investment. In a rapidly shifting financial landscape, Exim Bank is a catalyst and key player in the promotion of cross border trade and investment. By instilling a powerful culture of innovation and foresight, EXIM Bank helps India maximize its potential and meet and exceed its vision.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.eximbankindia.in/" target="_blank" rel="noopener">eximbankindia.in</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/PTA-300x200.png" alt="PTA Bank Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">The Eastern and Southern African Trade and Development Bank</div>
+              <div class="profile-horizontal-role">PTA Bank</div>
+              <div class="profile-horizontal-desc">
+                The Eastern and Southern African Trade and Development Bank (“PTA Bank”) is an African regional development financial institution established in 1985. PTA Bank offers a broad range of products and services, across both the private and public sectors, including debt, equity and quasi-equity as well as guarantees. PTA Bank’s investments cut across agriculture, trade, industry, infrastructure, energy and tourism, among others and are made on a commercial basis and sustainability principles.<br>
+                Headquartered in Bujumbura (Burundi) with regional hubs in Nairobi (Kenya), Harare (Zimbabwe) and Ebene (Mauritius), PTA Bank’s current shareholders include: Burundi, Comoros, the Democratic Republic of Congo, Djibouti, Egypt, Eritrea, Ethiopia, Kenya, Malawi, Mauritius, Rwanda, Seychelles, Somalia, Sudan, Uganda, Zambia and Zimbabwe. It also has the African Development Bank, the National Pensions Fund of Mauritius, Mauritian Eagle Insurance Company Ltd, and Rwanda Social Security Board, Africa Re, ZEP RE and Banco Nacional Investimento (BNI) as institutional shareholders while the People’s Republic of China and the Republic of Belarus are non-regional member countries.
+              </div>
+              <a class="profile-horizontal-link" href="http://www.ptabank.org/" target="_blank" rel="noopener">ptabank.org</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/BRD.png" alt="BRD Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">The Development Bank of Rwanda</div>
+              <div class="profile-horizontal-role">BRD</div>
+              <div class="profile-horizontal-desc">
+                The Development Bank of Rwanda (“BRD”) began its operations in 1967 and for more than four decades, BRD has been the sole provider of long term finance and has significantly facilitated the emergence of different productive enterprises in the private sector. The shareholders of the bank are the Government of Rwanda, Rwanda Public Enterprises, Private Institutions in Rwanda, Agence française de développement, German Investment Cooperation, Netherlands Development Finance Company, Administration Générale de la Coopération au Développement of Belgium and the Bank of Tokyo.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.brd.rw" target="_blank" rel="noopener">brd.rw</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/afrexim1.png" alt="Afreximbank Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">The African Export Import Bank</div>
+              <div class="profile-horizontal-role">Afreximbank</div>
+              <div class="profile-horizontal-desc">
+                The African Export Import Bank (“Afreximbank”) was established in 1993 by African Governments, African private and institutional investors as well as non-African financial institutions and private investors for the purpose of financing, promoting and expanding intra-African and extra-African trade. The Bank was established under the twin constitutive instruments of an Agreement signed by member States and multilateral organizations, and which confers on the Bank the status of an international multilateral organization; as well as a Charter, governing its corporate structure and operations, signed by all Shareholders. The Bank is headquartered in Cairo and has branch offices in Harare, Abuja, Abidjan and Nairobi.
+              </div>
+              <a class="profile-horizontal-link" href="https://afreximbank.com/" target="_blank" rel="noopener">afreximbank.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Partners Tab -->
+      <div class="tab-content" id="partners">
+        <h3>Our Partners</h3>
+        <h4 style="color:#2196f3; margin-top:2em;">Our Rwanda Partners</h4>
+        <div class="profile-list">
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/REG.png" alt="Rwanda Energy Group Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Rwanda Energy Group</div>
+              <div class="profile-horizontal-role">National Utility</div>
+              <div class="profile-horizontal-desc">
+                Rwanda Energy Group (formerly EWSA/ELECTROGAZ) distributes power and water in Rwanda. As a national utility since 1976, its obligations include coordination of all activities related to energy development, management of electricity infrastructure, gas, petroleum products, water and sanitation.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.reg.rw/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/Minftra.svg" alt="Ministry of Infrastructure Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Ministry of Infrastructure</div>
+              <div class="profile-horizontal-role">Government Ministry</div>
+              <div class="profile-horizontal-desc">
+                Develops sustainable power generation facilities to supply clean, cost-effective and uninterrupted energy for Rwanda.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.mininfra.gov.rw/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/Mimirema.jpg" alt="Ministry of Natural Resources Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Ministry of Natural Resources</div>
+              <div class="profile-horizontal-role">Government Ministry</div>
+              <div class="profile-horizontal-desc">
+                Ensures the protection and conservation of the environment and optimal, rational utilization of natural resources for sustainable national development.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.minirena.gov.rw/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/RDB.jpg" alt="Rwanda Development Board Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Rwanda Development Board</div>
+              <div class="profile-horizontal-role">Private Sector Development</div>
+              <div class="profile-horizontal-desc">
+                RDB works with and addresses the needs of companies of all sizes and both local and foreign investors, supporting private sector development.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.rdb.rw/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/REMA.png" alt="Rwanda Environment Management Authority Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Rwanda Environment Management Authority</div>
+              <div class="profile-horizontal-role">Environmental Oversight</div>
+              <div class="profile-horizontal-desc">
+                REMA coordinates and oversees the implementation of national environmental policy and legislation, playing a key role in sustainable development.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.rema.gov.rw/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/GISAGARA.png" alt="Gisagara District Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Gisagara District</div>
+              <div class="profile-horizontal-role">Local Government</div>
+              <div class="profile-horizontal-desc">
+                Gisagara is a district in Southern Province, Rwanda, divided into 13 sectors including Mamba, location of HQ. Its headquarters is Ndora, near the border with Burundi.
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 style="color:#2196f3; margin-top:2.5em;">Our Advisory Partners</h4>
+        <div class="profile-list">
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/logothemis.jpg" alt="THEMIS Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">THEMIS</div>
+              <div class="profile-horizontal-role">Project Development & Transaction Advisor</div>
+              <div class="profile-horizontal-desc">
+                THEMIS Advisory LLC, founded in 2013, is a project development company focused on structuring and financing economic (power and transport) and industrial (heavy industries) infrastructure assets in Sub Saharan Africa.
+              </div>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/SWECO.jpg" alt="SWECO Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">SWECO</div>
+              <div class="profile-horizontal-role">Consulting Partner</div>
+              <div class="profile-horizontal-desc">
+                Sweco delivers qualified consulting services throughout the client’s project chain, from feasibility studies and analyses to engineering, design and project management.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.swecogroup.com/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/Clifford Chance.png" alt="Clifford Chance Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Clifford Chance</div>
+              <div class="profile-horizontal-role">Legal Partner</div>
+              <div class="profile-horizontal-desc">
+                Clifford Chance LLP is a multinational law firm headquartered in London, UK. It is one of the ten largest law firms in the world by number of lawyers and revenue.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.cliffordchance.com/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/trust_law_chambers_logo.jpg" alt="Trust Law Chambers Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Trust Law Chambers</div>
+              <div class="profile-horizontal-role">Legal Partner</div>
+              <div class="profile-horizontal-desc">
+                Trust Law Chambers is a leading law firm in Rwanda, providing world-class advice on all areas of corporate and commercial law.
+              </div>
+              <a class="profile-horizontal-link" href="https://www.trustlawchambers.com/" target="_blank" rel="noopener">More info</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="assets/wesconsult-logo.png" alt="Wes Consult Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">Wes Consult</div>
+              <div class="profile-horizontal-role">Environmental & Social Consultant</div>
+              <div class="profile-horizontal-desc">
+                Local environmental and social consultant.
+              </div>
+            </div>
+          </div>
+        </div>
+        <h4 style="color:#2196f3; margin-top:2.5em;">EPC Contractor & Boiler Partner</h4>
+        <div class="profile-list">
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="Images/Shapoorji_Pallonji_Group_logo.svg.png" alt="SP Group Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">SP GROUP</div>
+              <div class="profile-horizontal-role">EPC Contractor</div>
+              <div class="profile-horizontal-desc">
+                SP Group is a 150-year-old conglomerate with a wide range of services from construction to manufacturing. With an annual turnover of USD 2.3 billion, SP Group has a global presence and is ranked 111 in the ENR Ranking of Top 250 Global Contractors, 2014.
+              </div>
+              <a class="profile-horizontal-link" href="http://www.shapoorji.in" target="_blank" rel="noopener">For more information</a>
+            </div>
+          </div>
+          <div class="profile-horizontal-card">
+            <div class="profile-horizontal-logo">
+              <img src="assets/andritz-logo.png" alt="ANDRITZ Logo">
+            </div>
+            <div class="profile-horizontal-content">
+              <div class="profile-horizontal-title">ANDRITZ</div>
+              <div class="profile-horizontal-role">Boiler Partner</div>
+              <div class="profile-horizontal-desc">
+                ANDRITZ will supply the two Fluidized Bed Boilers, the most critical elements of the power plant, converting peat into steam at 520°C and 80 bars. ANDRITZ offers technologies for producing steam and electricity from renewable fuels and efficient use of traditional fossil fuels. Headquartered in Graz, Austria, with 25,000 employees and over 250 sites worldwide.
+              </div>
+              <a class="profile-horizontal-link" href="http://www.andritz.com" target="_blank" rel="noopener">For more information</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>&copy; 2025 HQ Power Rwanda. All rights reserved.</p>
+  </footer>
+  <script>
+// Reliable tab logic for all browsers
+function activateTab(tab) {
+  // Remove active from all tab buttons and contents
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+  // Add active to selected tab and button
+  const btn = document.querySelector('.tab-btn[data-tab="' + tab + '"]');
+  const content = document.getElementById(tab);
+  if (btn && content) {
+    btn.classList.add('active');
+    content.classList.add('active');
+    setTimeout(() => {
+      document.getElementById('about-tabs').scrollIntoView({behavior: 'smooth', block: 'start'});
+    }, 100);
+  }
+}
+
+// Tab button click (event delegation for reliability)
+document.querySelector('.tab-header').addEventListener('click', function(e) {
+  const btn = e.target.closest('.tab-btn');
+  if (btn) {
+    e.preventDefault();
+    activateTab(btn.getAttribute('data-tab'));
+    history.replaceState(null, null, '#' + btn.getAttribute('data-tab'));
+  }
+});
+
+// Navigation dropdown links
+document.querySelectorAll('.who-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const tab = link.getAttribute('data-tab');
+    activateTab(tab);
+    history.replaceState(null, null, '#' + tab);
+  });
+});
+
+// On page load, activate tab from hash if present
+window.addEventListener('DOMContentLoaded', function() {
+  const hash = window.location.hash.replace('#', '');
+  if(hash && document.getElementById(hash)) {
+    activateTab(hash);
+  } else {
+    activateTab('management'); // Default to management tab
+  }
+});
+</script>
+  <!-- Fix for dropdown disappearing on hover -->
+  <style>
+  /* Ensures dropdown stays open when moving mouse between button and menu */
+  .dropdown:hover > .dropdown-content,
+  .dropdown:focus-within > .dropdown-content {
+    display: block !important;
+  }
+  .dropdown-content {
+    pointer-events: auto;
+  }
+  </style>
+  <script>
+    // Improved dropdown logic for better hover experience
+    document.querySelectorAll('.dropdown').forEach(function(drop){
+      let timeout;
+      drop.addEventListener('mouseenter', function(){
+        clearTimeout(timeout);
+        this.querySelector('.dropdown-content').style.display = 'block';
+      });
+      drop.addEventListener('mouseleave', function(){
+        const dropdownContent = this.querySelector('.dropdown-content');
+        timeout = setTimeout(() => {
+          dropdownContent.style.display = 'none';
+        }, 200);
+      });
+      // Also show dropdown on focus for accessibility
+      drop.querySelector('.dropbtn').addEventListener('focus', function(){
+        drop.querySelector('.dropdown-content').style.display = 'block';
+      });
+      drop.querySelector('.dropbtn').addEventListener('blur', function(){
+        setTimeout(() => {
+          drop.querySelector('.dropdown-content').style.display = 'none';
+        }, 200);
+      });
+    });
+  </script>
+</body>
+</html>
