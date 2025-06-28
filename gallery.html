@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery | HQ Power Rwanda</title>
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="icon" href="Images/Logo.png" type="image/png" />
+  <link rel="icon" href="Images/Logo.jpg" type="image/jpg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -20,13 +20,21 @@
       <li class="dropdown who-dropdown">
         <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
         <div class="dropdown-content">
-          <a href="about.html#management">Management</a>
-          <a href="about.html#stakeholders">Stakeholders</a>
-          <a href="about.html#lenders">Lenders</a>
-          <a href="about.html#partners">Partners</a>
+          <a href="about.html#management" class="who-link" data-tab="management">Management</a>
+          <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
+          <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
+          <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
         </div>
       </li>
-      <li><a href="project.html">The Project</a></li>
+      <li class="dropdown project-dropdown-nav">
+        <a href="project.html" class="dropbtn">The Project &#9662;</a>
+        <div class="dropdown-content">
+          <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
+          <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
+          <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+          <a href="news.html#news" class="project-nav-link" data-target="news">News</a>
+        </div>
+      </li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="contact.html">Contact Us</a></li>
       <li><a href="gallery.html">Gallery</a></li>

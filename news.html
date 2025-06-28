@@ -3,14 +3,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Services | HQ Power Rwanda</title>
-  <link rel="icon" type="image.png"  href="Images/Logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  </link>
+  <title>News | HQ Power Rwanda</title>
+  <link rel="icon" type="image/jpg" href="assets/Logo.jpg">
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(120deg, #e3f2fd 60%, #fffde7 100%);
+      margin: 0;
+      color: #222;
+    }
+    .navbar-horizontal {
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar-horizontal .logo img {
+      height: 44px;
+      vertical-align: middle;
+    }
+    .nav-links-horizontal {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .nav-links-horizontal a {
+      text-decoration: none;
+      color: #1976d2;
+      font-weight: bold;
+      font-size: 1.08em;
+      padding: 0.4em 1em;
+      border-radius: 1.2em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links-horizontal a:hover, .nav-links-horizontal a.active {
+      background: #ffd600;
+      color: #1976d2;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      min-width: 180px;
+      box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+      border-radius: 0.7em;
+      z-index: 1001;
+      padding: 0.5em 0;
+      top: 2.5em;
+      left: 0;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.7em 1.2em;
+      color: #1976d2;
+      background: none;
+      border-radius: 0.5em;
+      font-size: 1em;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown-content a:hover {
+      background: #e3f2fd;
+      color: #388e3c;
+    }
+    .news-hero {
+      background: linear-gradient(90deg, #2196f3 70%, #ffd600 100%);
+      color: #fff;
+      text-align: center;
+      padding: 3.5rem 1rem 2.5rem 1rem;
+      border-radius: 0 0 2em 2em;
+      margin-bottom: 2.5em;
+      box-shadow: 0 4px 24px rgba(33,150,243,0.08);
+    }
+    .news-hero h1 {
+      font-size: 2.7em;
+      font-weight: 800;
+      margin-bottom: 0.3em;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 12px rgba(33,150,243,0.13);
+    }
+    .news-hero p {
+      font-size: 1.2em;
+      color: #fffde7;
+      margin-bottom: 0.5em;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(33,150,243,0.10);
+    }
+    .news-list {
+      max-width: 1100px;
+      margin: 0 auto 3em auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5em;
+      padding: 0 1em;
+    }
+    .news-card {
+      background: #fff;
+      border-radius: 1.5em;
+      box-shadow: 0 4px 24px #2196f322;
+      padding: 2em 1.5em 1.5em 1.5em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+      border: 2px solid #e3f2fd;
+      transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
+      position: relative;
+      min-height: 340px;
+    }
+    .news-card:hover {
+      box-shadow: 0 8px 32px #1976d244;
+      transform: translateY(-4px) scale(1.01);
+      border: 2px solid #ffd600;
+    }
+    .news-card img {
+      width: 100%;
+      border-radius: 1em;
+      margin-bottom: 1em;
+      object-fit: cover;
+      max-height: 180px;
+      background: #e3f2fd;
+    }
+    .news-card h2 {
+      font-size: 1.3em;
+      color: #1976d2;
+      margin: 0 0 0.2em 0;
+      font-weight: 700;
+    }
+    .news-card .news-meta {
+      font-size: 0.98em;
+      color: #555;
+      margin-bottom: 0.7em;
+    }
+    .news-card p {
+      color: #444;
+      font-size: 1.08em;
+      margin-bottom: 1em;
+      flex: 1;
+    }
+    .news-card a {
+      background: #ffd600;
+      color: #1976d2;
+      border: none;
+      border-radius: 1em;
+      padding: 0.5em 1.2em;
+      font-size: 1em;
+      font-weight: 600;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(255,214,0,0.10);
+    }
+    .news-card a:hover {
+      background: #1976d2;
+      color: #ffd600;
+    }
+    @media (max-width: 700px) {
+      .news-list { grid-template-columns: 1fr; }
+      .news-card { padding: 1.2em 0.7em; }
+      .news-hero { padding: 2em 0.5em 1.2em 0.5em; }
+    }
+  </style>
 </head>
 <body>
   <!-- Universal Navigation Bar: Place just after <body> on every page -->
@@ -35,6 +205,7 @@
           <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
           <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
           <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+          <a href="news.html#news" class="project-nav-link" data-target="news">News</a>
         </div>
       </li>
       <li><a href="careers.html">Careers</a></li>
@@ -44,86 +215,55 @@
     <div class="menu-toggle" id="menuToggle">&#9776;</div>
   </nav>
 
-  <header>
   <main class="main-content">
-    <!-- Start Services Section -->
-    <section class="hero section-services animate-fade-in">
-      <div class="hero-content">
-        <h1><span class="highlight">Our Services</span></h1>
+    <h1>Latest News & Updates</h1>
+    <p>Stay up to date with HQ Power Rwanda’s milestones, events, and community impact.</p>
+  </section>
+
+  <main>
+    <div class="news-list">
+      <!-- Example News Card 1 -->
+      <div class="news-card">
+        <img src="assets/news1.jpg" alt="News 1">
+        <h2>HQ Power Rwanda Achieves Full Capacity</h2>
+        <div class="news-meta"><i class="fa fa-calendar"></i> June 2025 &nbsp; | &nbsp; <i class="fa fa-user"></i> By Communications Team</div>
         <p>
-          Discover our innovative energy solutions and community projects.<br>
-          <!-- Add more description as needed -->
+          Our power plant has reached full operational capacity, providing sustainable energy to thousands of Rwandan homes and businesses.
         </p>
+        <a href="#">Read More</a>
       </div>
-      <div class="hero-image">
-        <img src="assets/services-energy.svg" alt="Services Illustration">
+      <!-- Example News Card 2 -->
+      <div class="news-card">
+        <img src="assets/news2.jpg" alt="News 2">
+        <h2>Community Engagement: Tree Planting Day</h2>
+        <div class="news-meta"><i class="fa fa-calendar"></i> May 2025 &nbsp; | &nbsp; <i class="fa fa-user"></i> By CSR Team</div>
+        <p>
+          HQ Power Rwanda joined local schools and leaders for a tree planting event, supporting environmental restoration and education.
+        </p>
+        <a href="#">Read More</a>
       </div>
-      <div class="hero-svg-bg">
-        <svg viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path fill="#fff" fill-opacity="0.35" d="M0,80 C360,160 1080,0 1440,80 L1440,180 L0,180 Z"/>
-        </svg>
+      <!-- Example News Card 3 -->
+      <div class="news-card">
+        <img src="assets/news3.jpg" alt="News 3">
+        <h2>New Internship Program Launched</h2>
+        <div class="news-meta"><i class="fa fa-calendar"></i> April 2025 &nbsp; | &nbsp; <i class="fa fa-user"></i> By HR Department</div>
+        <p>
+          We are excited to announce a new internship program for Rwandan graduates, offering hands-on experience in energy and engineering.
+        </p>
+        <a href="#">Read More</a>
       </div>
-    </section>
-
-    <section class="features-section animate-slide-up">
-      <div class="feature-card glass-card">
-        <div class="feature-icon" style="background: #e3f2fd;">
-          <i class="fas fa-bolt fa-2x" style="color:#2196f3;"></i>
-        </div>
-        <h2>Solar Power</h2>
-        <p>High-efficiency solar installations for communities and businesses.</p>
-      </div>
-      <div class="feature-card glass-card">
-        <div class="feature-icon" style="background: #fffde7;">
-          <i class="fas fa-water fa-2x" style="color:#ffd600;"></i>
-        </div>
-        <h2>Hydro Energy</h2>
-        <p>Reliable hydroelectric solutions for sustainable growth.</p>
-      </div>
-      <div class="feature-card glass-card">
-        <div class="feature-icon" style="background: #e8f5e9;">
-          <i class="fas fa-leaf fa-2x" style="color:#2e8b57;"></i>
-        </div>
-        <h2>Green Initiatives</h2>
-        <p>Community projects and environmental stewardship programs.</p>
-      </div>
-    </section>
-    <!-- End Services Section -->
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-      <h2>What Our Partners Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <img src="assets/user1.jpg" alt="Jean M." class="testimonial-avatar">
-          <p>"HQ Power Rwanda delivered on time and exceeded our expectations."</p>
-          <span>- Jean M., Community Leader</span>
-        </div>
-        <div class="testimonial-card">
-          <img src="assets/user2.jpg" alt="Alice K." class="testimonial-avatar">
-          <p>"Their team is professional and committed to quality."</p>
-          <span>- Alice K., Project Manager</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-      <h2>Stay Updated</h2>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit">Subscribe</button>
-      </form>
-    </section>
+      <!-- Add more news cards as needed -->
+    </div>
   </main>
+
   <footer>
     <div class="footer-links">
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
       <a href="contact.html">Contact</a>
+      <a href="news.html">News</a>
     </div>
     <p>&copy; 2025 HQ Power Rwanda. All rights reserved.</p>
   </footer>
-  <script src="js/main.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About | HQ Power Rwanda</title>
-  <link rel="icon" type="image/png" href="Images/Logo.png">
+  <link rel="icon" type="image/jpg" href="Images/Logo.jpg">
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -446,34 +446,35 @@
 </head>
 <body>
   <!-- Universal Navigation Bar -->
-  <nav class="glass-nav" style="background: #21a1ff;">
+  <nav class="navbar-horizontal glass-nav">
   <a href="index.html" class="logo">
     <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
   </a>
-  <ul class="nav-links-horizontal" id="navLinks" style="margin: 0; padding: 0;">
-    <li><a href="index.html" style="color: #fff; font-weight: 500;">Home</a></li>
-    <li class="dropdown who-dropdown" style="position: relative;">
-      <a href="about.html" class="dropbtn active" style="background: #ffd600; color: #1976d2; border-radius: 1em; font-weight: 600; padding: 0.6em 2em;">Who We Are <span style="font-size:1.1em;">&#9662;</span></a>
-      <div class="dropdown-content" style="display: none; position: absolute; left: 0; top: 110%; background: #fff; min-width: 220px; border-radius: 1.5em; box-shadow: 0 8px 32px rgba(33,150,243,0.13); padding: 1em 0;">
-        <a href="about.html#management" class="who-link" data-tab="management" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Management</a>
-        <a href="about.html#stakeholders" class="who-link" data-tab="shareholders" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Shareholders</a>
-        <a href="about.html#lenders" class="who-link" data-tab="lenders" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Lenders</a>
-        <a href="about.html#partners" class="who-link" data-tab="partners" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Partners</a>
+  <ul class="nav-links-horizontal" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li class="dropdown who-dropdown">
+      <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
+      <div class="dropdown-content">
+        <a href="about.html#management" class="who-link" data-tab="management">Management</a>
+        <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
+        <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
+        <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
       </div>
     </li>
-    <li class="dropdown project-dropdown-nav" style="position: relative;">
-      <a href="project.html" class="dropbtn" style="color: #fff; font-weight: 500;">The Project <span style="font-size:1.1em;">&#9662;</span></a>
-      <div class="dropdown-content" style="display: none; position: absolute; left: 0; top: 110%; background: #fff; min-width: 220px; border-radius: 1.5em; box-shadow: 0 8px 32px rgba(33,150,243,0.13); padding: 1em 0;">
-        <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Peat Production</a>
-        <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Power Plant</a>
-        <a href="project.html#gallery" class="project-nav-link" data-target="gallery" style="color: #2196f3; font-size: 1.15em; padding: 0.8em 2em; border-radius: 1em; font-weight: 500;">Gallery</a>
+    <li class="dropdown project-dropdown-nav">
+      <a href="project.html" class="dropbtn">The Project &#9662;</a>
+      <div class="dropdown-content">
+        <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
+        <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
+        <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+        <a href="news.html#news" class="project-nav-link" data-target="news">News</a>
       </div>
     </li>
-    <li><a href="careers.html" style="color: #fff; font-weight: 500;">Careers</a></li>
-    <li><a href="contact.html" style="color: #fff; font-weight: 500;">Contact Us</a></li>
-    <li><a href="gallery.html" style="color: #fff; font-weight: 500;">Gallery</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
   </ul>
-  <div class="menu-toggle" id="menuToggle" style="color: #fff;">&#9776;</div>
+  <div class="menu-toggle" id="menuToggle">&#9776;</div>
 </nav>
 <script>
   // Dropdown hover logic for desktop
@@ -869,36 +870,20 @@
         </div>
         <h4 style="color:#2196f3; margin-top:2.5em;">Boiler Partner</h4>
 
-        
-        <!--<div class="profile-list">
-          <div class="profile-horizontal-card">
-            <div class="profile-horizontal-logo">
-               <img src="Images/Shapoorji_Pallonji_Group_logo.svg.png" alt="SP Group Logo"> 
-            </div>
-            <div class="profile-horizontal-content">
-              <div class="profile-horizontal-title">SP GROUP</div>
-              <div class="profile-horizontal-role">EPC Contractor</div>
-              <div class="profile-horizontal-desc">
-                SP Group is a 150-year-old conglomerate with a wide range of services from construction to manufacturing. With an annual turnover of USD 2.3 billion, SP Group has a global presence and is ranked 111 in the ENR Ranking of Top 250 Global Contractors, 2014.
-              </div>
-              <a class="profile-horizontal-link" href="http://www.shapoorji.in" target="_blank" rel="noopener">For more information</a>
-            </div> -->
 
+        <div class="profile-horizontal-card">
+          <div class="profile-horizontal-logo">
+            <img src="Images/andritz" alt="ANDRITZ Logo">
           </div>
-          <div class="profile-horizontal-card">
-            <div class="profile-horizontal-logo">
-              <img src="Images/andritz" alt="ANDRITZ Logo">
+          <div class="profile-horizontal-content">
+            <div class="profile-horizontal-title">ANDRITZ</div>
+            <div class="profile-horizontal-role">Boiler Partner</div>
+            <div class="profile-horizontal-desc">
+              ANDRITZ will supply the two Fluidized Bed Boilers, the most critical elements of the power plant, converting peat into steam at 520°C and 80 bars. ANDRITZ offers technologies for producing steam and electricity from renewable fuels and efficient use of traditional fossil fuels. Headquartered in Graz, Austria, with 25,000 employees and over 250 sites worldwide.
             </div>
-            <div class="profile-horizontal-content">
-              <div class="profile-horizontal-title">ANDRITZ</div>
-              <div class="profile-horizontal-role">Boiler Partner</div>
-              <div class="profile-horizontal-desc">
-                ANDRITZ will supply the two Fluidized Bed Boilers, the most critical elements of the power plant, converting peat into steam at 520°C and 80 bars. ANDRITZ offers technologies for producing steam and electricity from renewable fuels and efficient use of traditional fossil fuels. Headquartered in Graz, Austria, with 25,000 employees and over 250 sites worldwide.
-              </div>
-              <a class="profile-horizontal-link" href="http://www.andritz.com" target="_blank" rel="noopener">For more information</a>
-            </div>
+            <a class="profile-horizontal-link" href="http://www.andritz.com" target="_blank" rel="noopener">For more information</a>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   </main>
