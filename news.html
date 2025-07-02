@@ -1,323 +1,842 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>News | HQ Power Rwanda</title>
-  <link rel="icon" type="image/jpg" href="assets/Logo.jpg">
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HQ Power News</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(120deg, #e3f2fd 60%, #fffde7 100%);
       margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f4f7fa;
       color: #222;
     }
-    /* Universal Floating Navigation Bar */
-    .navbar-horizontal {
-      background: rgba(255,255,255,0.97);
-      padding: 1rem 2rem;
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
-      position: fixed; /* Always fixed at the top */
-      top: 0;
-      left: 0;
-      width: 100vw;
+      padding: 1rem 2rem;
       z-index: 1000;
-      transition: box-shadow 0.3s, background 0.3s;
-      animation: navFadeIn 1s cubic-bezier(.4,0,.2,1);
-      backdrop-filter: blur(6px);
     }
-    @keyframes navFadeIn {
-      from { opacity: 0; transform: translateY(-30px);}
-      to { opacity: 1; transform: translateY(0);}
+    .navbar a {
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 700;
+      color: #1976d2;
+      transition: color 0.2s;
     }
-    .main-content {
-      margin-top: 90px; /* Adjust if navbar height changes */
+    .navbar a:hover {
+      color: #ffd600;
     }
-    @media (max-width: 900px) {
-      .navbar-horizontal {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.7rem 1rem;
-      }
-      .main-content {
-        margin-top: 110px;
-      }
-      .nav-links-horizontal {
-        flex-direction: column;
-        background: rgba(255,255,255,0.97);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        display: none;
-        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
-        z-index: 1002;
-        width: 100vw;
-        animation: navFadeIn 0.5s;
-      }
-      .nav-links-horizontal.open {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
+    .logo a {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #1976d2;
+      letter-spacing: 2px;
+    }
+    .hero {
+      background: linear-gradient(90deg, #1976d2 60%, #ffd600 100%);
+      color: #fff;
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      margin-top: 80px;
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 8px 32px rgba(25,118,210,0.08);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #fffde7;
+      font-weight: 500;
+    }
+    .news-grid {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+    .news-card {
+      background: #fff;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px rgba(25,118,210,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .news-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 8px 32px rgba(25,118,210,0.13);
+    }
+    .news-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #eee;
+    }
+    .news-card .news-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card h2 {
+      color: #1976d2;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .news-card .meta {
+      font-size: 0.95rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+    .news-card p {
+      flex-grow: 1;
+      color: #444;
+      font-size: 1.05rem;
+    }
+    .read-more {
+      margin-top: 1.2rem;
+      align-self: flex-start;
+      background: #ffd600;
+      padding: 0.6rem 1.3rem;
+      color: #1976d2;
+      border-radius: 2rem;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .read-more:hover {
+      background: #1976d2;
+      color: #ffd600;
+    }
+    /* Modal Styles */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(25, 118, 210, 0.15);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-bg.active {
+      display: flex;
+    }
+    .modal {
+      background: #fff;
+      border-radius: 1.2rem;
+      max-width: 998px;
+      width: 98vw;
+      max-height: 100vh;
+      overflow-y: auto;
+      box-shadow: 0 8px 40px rgba(25,118,210,0.18);
+      padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+      position: relative;
+      animation: popin 0.25s;
+      margin: 1vh auto;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.13rem;
+      line-height: 1.7;
+    }
+    @keyframes popin {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal .close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: #ffd600;
+      color: #1976d2;
+      border: none;
+      border-radius: 50%;
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .modal .close-btn:hover {
+      background: #1976d2;
+      color: #ffd600;
+    }
+    .modal img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 0.7rem;
+      margin-bottom: 2.2rem;
+      background: #f4f7fa;
+      display: block;
+    }
+    .modal h2 {
+      color: #1976d2;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+    .modal .meta {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 1.2rem;
+    }
+    .modal section {
+      margin-bottom: 1.5rem;
+    }
+    .modal h3 {
+      color: #ffd600;
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      font-weight: 800;
+    }
+    .modal p {
+      color: #333;
+      font-size: 1.07rem;
+      margin-bottom: 0.7rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #aaa;
+      font-size: 0.95rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 1200px) {
+      .modal { max-width: 99vw; }
     }
     @media (max-width: 600px) {
-      .navbar-horizontal {
-        padding: 0.5rem 0.5rem;
-      }
-      .main-content {
-        margin-top: 120px;
-      }
-      .nav-links-horizontal a {
-        font-size: 1em;
-        padding: 0.7em 1em;
-      }
+      .hero h1 { font-size: 2rem; }
+      .modal { padding: 0.5rem 0.1rem; }
+      .modal img { max-height: 220px; }
     }
+    /* Horizontal Navbar Styles */
+    .navbar-horizontal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Center everything horizontally */
+      padding: 0.3rem 1.2rem;
+      z-index: 1000;
+      min-height: 60px;
+    }
+
+    .navbar-horizontal .logo {
+      position: absolute;
+      left: 2vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     .navbar-horizontal .logo img {
-      height: 44px;
-      vertical-align: middle;
+      height: 40px;
+      width: auto;
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #1976d2;
+      cursor: pointer;
+      position: absolute;
+      right: 2vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     .nav-links-horizontal {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
+      justify-content: center; /* Center links */
       margin: 0;
       padding: 0;
-      align-items: center;
+      gap: 0.5rem;
     }
+
+    .nav-links-horizontal li {
+      position: relative;
+    }
+
+    .nav-links-horizontal > li {
+      margin: 0 0.5rem;
+    }
+
     .nav-links-horizontal a {
       text-decoration: none;
       color: #1976d2;
-      font-weight: bold;
-      font-size: 1.08em;
-      padding: 0.4em 1em;
-      border-radius: 1.2em;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 2rem;
       transition: background 0.2s, color 0.2s;
+      display: block;
     }
-    .nav-links-horizontal a:hover, .nav-links-horizontal a.active {
+
+    .nav-links-horizontal a:hover,
+    .nav-links-horizontal .dropdown-content a:hover {
       background: #ffd600;
       color: #1976d2;
     }
-    .dropdown {
-      position: relative;
+
+    .dropdown .dropbtn {
+      cursor: pointer;
     }
+
     .dropdown-content {
       display: none;
       position: absolute;
       background: #fff;
-      min-width: 180px;
-      box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
-      border-radius: 0.7em;
-      z-index: 1001;
-      padding: 0.5em 0;
-      top: 2.5em;
+      min-width: 170px;
+      box-shadow: 0 8px 24px rgba(25,118,210,0.08);
+      border-radius: 0.7rem;
+      top: 110%;
       left: 0;
+      z-index: 1001;
+      padding: 0.5rem 0;
     }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+
     .dropdown-content a {
+      color: #1976d2;
+      padding: 0.7rem 1.2rem;
+      border-radius: 0;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
       display: block;
-      padding: 0.7em 1.2em;
-      color: #1976d2;
-      background: none;
-      border-radius: 0.5em;
-      font-size: 1em;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
     }
-    .dropdown-content a:hover {
-      background: #e3f2fd;
-      color: #388e3c;
+
+    @media (max-width: 900px) {
+      .navbar-horizontal {
+        justify-content: flex-start;
+        padding: 0.3rem 0.5rem;
+      }
+      .navbar-horizontal .logo {
+        position: static;
+        transform: none;
+        margin-right: 1rem;
+      }
+      .menu-toggle {
+        display: block;
+        position: static;
+        transform: none;
+        margin-left: auto;
+      }
+      .nav-links-horizontal {
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background: rgba(255,255,255,0.98);
+        box-shadow: 0 8px 32px rgba(25,118,210,0.08);
+        border-radius: 0 0 1rem 1rem;
+        transition: max-height 0.3s;
+        max-height: 0;
+        overflow: hidden;
+        padding-top: 1.5rem;
+        z-index: 2000;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+      }
+      .nav-links-horizontal.open {
+        max-height: 90vh;
+        padding-bottom: 2rem;
+      }
+      .nav-links-horizontal > li {
+        margin: 0 0 1.2rem 1.5rem;
+      }
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        min-width: unset;
+        border-radius: 0;
+        padding: 0;
+      }
     }
-    .news-hero {
-      background: linear-gradient(90deg, #2196f3 70%, #ffd600 100%);
-      color: #fff;
-      text-align: center;
-      padding: 3.5rem 1rem 2.5rem 1rem;
-      border-radius: 0 0 2em 2em;
-      margin-bottom: 2.5em;
-      box-shadow: 0 4px 24px rgba(33,150,243,0.08);
+
+    @media (max-width: 600px) {
+      .navbar-horizontal .logo img {
+        height: 30px;
+      }
+      .nav-links-horizontal {
+        top: 48px;
+        padding-top: 1rem;
+      }
     }
-    .news-hero h1 {
-      font-size: 2.7em;
-      font-weight: 800;
-      margin-bottom: 0.3em;
-      letter-spacing: -1px;
-      text-shadow: 0 2px 12px rgba(33,150,243,0.13);
+
+    body {
+      padding-top: 70px;
     }
-    .news-hero p {
-      font-size: 1.2em;
-      color: #fffde7;
-      margin-bottom: 0.5em;
-      font-weight: 500;
-      text-shadow: 0 2px 8px rgba(33,150,243,0.10);
-    }
-    .news-list {
-      max-width: 1100px;
-      margin: 0 auto 3em auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2.5em;
-      padding: 0 1em;
-    }
-    .news-card {
-      background: #fff;
-      border-radius: 1.5em;
-      box-shadow: 0 4px 24px #2196f322;
-      padding: 2em 1.5em 1.5em 1.5em;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7em;
-      border: 2px solid #e3f2fd;
-      transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
-      position: relative;
-      min-height: 340px;
-    }
-    .news-card:hover {
-      box-shadow: 0 8px 32px #1976d244;
-      transform: translateY(-4px) scale(1.01);
-      border: 2px solid #ffd600;
-    }
-    .news-card img {
-      width: 100%;
-      border-radius: 1em;
-      margin-bottom: 1em;
-      object-fit: cover;
-      max-height: 180px;
-      background: #e3f2fd;
-    }
-    .news-card h2 {
-      font-size: 1.3em;
-      color: #1976d2;
-      margin: 0 0 0.2em 0;
-      font-weight: 700;
-    }
-    .news-card .news-meta {
-      font-size: 0.98em;
-      color: #555;
-      margin-bottom: 0.7em;
-    }
-    .news-card p {
-      color: #444;
-      font-size: 1.08em;
-      margin-bottom: 1em;
-      flex: 1;
-    }
-    .news-card a {
-      background: #ffd600;
-      color: #1976d2;
-      border: none;
-      border-radius: 1em;
-      padding: 0.5em 1.2em;
-      font-size: 1em;
-      font-weight: 600;
-      text-decoration: none;
-      align-self: flex-start;
-      transition: background 0.2s, color 0.2s;
-      box-shadow: 0 2px 8px rgba(255,214,0,0.10);
-    }
-    .news-card a:hover {
-      background: #1976d2;
-      color: #ffd600;
-    }
-    @media (max-width: 700px) {
-      .news-list { grid-template-columns: 1fr; }
-      .news-card { padding: 1.2em 0.7em; }
-      .news-hero { padding: 2em 0.5em 1.2em 0.5em; }
+    @media (max-width: 600px) {
+      body { padding-top: 54px; }
     }
   </style>
 </head>
 <body>
-  <!-- Universal Navigation Bar: Place just after <body> on every page -->
   <nav class="navbar-horizontal glass-nav">
     <a href="index.html" class="logo">
       <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
     </a>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
     <ul class="nav-links-horizontal" id="navLinks">
       <li><a href="index.html">Home</a></li>
-      <li class="dropdown who-dropdown">
+      <li class="dropdown">
         <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
         <div class="dropdown-content">
-          <a href="about.html#management" class="who-link" data-tab="management">Management</a>
-          <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
-          <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
-          <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
+          <a href="about.html#management">Management</a>
+          <a href="about.html#stakeholders">Stakeholders</a>
+          <a href="about.html#lenders">Lenders</a>
+          <a href="about.html#partners">Partners</a>
         </div>
       </li>
-      <li class="dropdown project-dropdown-nav">
+      <li class="dropdown">
         <a href="project.html" class="dropbtn">The Project &#9662;</a>
         <div class="dropdown-content">
-          <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
-          <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
-          <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
-          <a href="news.html#news" class="project-nav-link" data-target="news">News</a>
+          <a href="project.html#peat-production">Peat Production</a>
+          <a href="project.html#power-plant">Power Plant</a>
+          <a href="project.html#gallery">Gallery</a>
+          <a href="news.html#news">News</a>
         </div>
       </li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="contact.html">Contact Us</a></li>
-     <!-- <li><a href="gallery.html">Gallery</a></li> -->
     </ul>
-    <div class="menu-toggle" id="menuToggle">&#9776;</div>
   </nav>
 
-  <main class="main-content">
-    <h1>Latest News & Updates</h1>
-    <p>Stay up to date with HQ Power Rwanda’s milestones, events, and community impact.</p>
+  <section class="hero">
+    <h1>HQ Power News</h1>
+    <p>Discover our latest achievements, milestones, and community impact</p>
   </section>
 
-  <main>
-    <div class="news-list">
-      <!-- Example News Card 1 -->
-      <div class="news-card">
-        <img src="assets/news1.jpg" alt="News 1">
-        <h2>HQ Power Rwanda Achieves Full Capacity</h2>
-        <div class="news-meta"><i class="fa fa-calendar"></i> June 2025 &nbsp; | &nbsp; <i class="fa fa-user"></i> By Communications Team</div>
-        <p>
-          Our power plant has reached full operational capacity, providing sustainable energy to thousands of Rwandan homes and businesses.
-        </p>
-        <a href="#">Read More</a>
+  <section class="news-grid">
+    <!-- News Card 1 -->
+    <div class="news-card">
+      <img src="assets/news1.jpg" alt="Social Responsibility Milestones">
+      <div class="news-content">
+        <h2>HQPower Social Responsibility Projects Achieved Milestones 2020-2021</h2>
+        <div class="meta">November 2, 2021 · By HQ Power Administrator</div>
+        <p>HQ Power is committed to integrating itself in the community and becoming a main actor on the economic and social welfare of the Mamba Sector community where it works...</p>
+        <button class="read-more" data-modal="modal1">Read More</button>
       </div>
-      <!-- Example News Card 2 -->
-      <div class="news-card">
-        <img src="assets/news2.jpg" alt="News 2">
-        <h2>Community Engagement: Tree Planting Day</h2>
-        <div class="news-meta"><i class="fa fa-calendar"></i> May 2025 &nbsp; | &nbsp; <i class="fa fa-user"></i> By CSR Team</div>
-        <p>
-          HQ Power Rwanda joined local schools and leaders for a tree planting event, supporting environmental restoration and education.
-        </p>
-        <a href="#">Read More</a>
-      </div>
-      <!-- Example News Card 3 -->
-      <div class="news-card">
-        <img src="assets/news3.jpg" alt="News 3">
-        <h2>New Internship Program Launched</h2>
-        <div class="news-meta"><i class="fa fa-calendar"></i> April 2025 &nbsp; | &nbsp; <i class="fa fa-user"></i> By HR Department</div>
-        <p>
-          We are excited to announce a new internship program for Rwandan graduates, offering hands-on experience in energy and engineering.
-        </p>
-        <a href="#">Read More</a>
-      </div>
-      <!-- Add more news cards as needed -->
     </div>
-  </main>
+    <!-- News Card 2 -->
+    <div class="news-card">
+      <img src="assets/news- 2 new.jpg" alt="COVID-19 Support">
+      <div class="news-content">
+        <h2>HQ Power Helps Vulnerable Families During COVID-19</h2>
+        <div class="meta">May 8, 2020 · By HQ Power Administrator</div>
+        <p>HQ Power made a donation of Rwf 2 million to Solid Africa to supply meals to economically disadvantaged patients in four public hospitals...</p>
+        <button class="read-more" data-modal="modal2">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 3 -->
+    <div class="news-card">
+      <img src="assets/Minister_Visit_1.jpg" alt="Minister Visit">
+      <div class="news-content">
+        <h2>Minister of Infrastructure and State Minister Visit HQ</h2>
+        <div class="meta">June 8, 2018 · By HQ Power Administrator</div>
+        <p>The visit took place at Kabumbwe Cell, Mamba Sector, Gisagara District in the Southern Province of Rwanda where the construction works are ongoing...</p>
+        <button class="read-more" data-modal="modal3">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 4 -->
+    <div class="news-card">
+      <img src="assets/ijglobal-award.jpg" alt="IJGlobal Award">
+      <div class="news-content">
+        <h2>HQPOWER Wins IJGlobal Award</h2>
+        <div class="meta">2024 · By HQ Power Administrator</div>
+        <p>HQPOWER is honored to receive the prestigious IJGlobal Award for excellence in infrastructure and energy projects.</p>
+        <button class="read-more" data-modal="modal-award">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 5 -->
+    <div class="news-card">
+      <img src="assets/gisagara-donation.jpg" alt="Donation to Gisagara Primary School">
+      <div class="news-content">
+        <h2>HQ POWER AND SHAPOORJI PALLONJI RWANDA DONATE 16M RWF WORTH OF MATERIALS TO GISAGARA PRIMARY SCHOOL</h2>
+        <div class="meta">2023 · By HQ Power Administrator</div>
+        <p>HQ Power and Shapoorji Pallonji Rwanda have donated materials worth 16 million RWF to support education in Gisagara District.</p>
+        <button class="read-more" data-modal="modal-gisagara">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 6 -->
+    <div class="news-card">
+      <img src="assets/certificate.jpg" alt="Certificate of Recognition">
+      <div class="news-content">
+        <h2>CERTIFICATE OF RECOGNITION</h2>
+        <div class="meta">2023 · By HQ Power Administrator</div>
+        <p>HQ Power receives a certificate of recognition for outstanding contribution to the community and energy sector.</p>
+        <button class="read-more" data-modal="modal-certificate">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 7 -->
+    <div class="news-card">
+      <img src="assets/governor-visit.jpg" alt="Governor Visit">
+      <div class="news-content">
+        <h2>GOVERNOR OF THE SOUTHERN PROVINCE VISIT THE HQ POWER PROJECT</h2>
+        <div class="meta">2023 · By HQ Power Administrator</div>
+        <p>The Governor of the Southern Province visited HQ Power Project to witness progress and community impact.</p>
+        <button class="read-more" data-modal="modal-governor">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 8 -->
+    <div class="news-card">
+      <img src="assets/finnfund-visit.jpg" alt="Finnfund Delegation Visit">
+      <div class="news-content">
+        <h2>FINNFUND DELEGATION VISIT THE HQ POWER PROJECT</h2>
+        <div class="meta">2023 · By HQ Power Administrator</div>
+        <p>A delegation from Finnfund visited HQ Power Project to discuss sustainable investment and development.</p>
+        <button class="read-more" data-modal="modal-finnfund">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 9 -->
+    <div class="news-card">
+      <img src="assets/genocide-donation.jpg" alt="Donation to Genocide Survivors">
+      <div class="news-content">
+        <h2>DONATES TO GENOCIDE SURVIVORS</h2>
+        <div class="meta">2023 · By HQ Power Administrator</div>
+        <p>HQ Power made a donation to support genocide survivors, reaffirming its commitment to social responsibility.</p>
+        <button class="read-more" data-modal="modal-genocide">Read More</button>
+      </div>
+    </div>
+    <!-- News Card 10 -->
+    <div class="news-card">
+      <img src="assets/groundbreaking.jpg" alt="Ground Breaking Ceremony">
+      <div class="news-content">
+        <h2>GROUND BREAKING CEREMONY</h2>
+        <div class="meta">2023 · By HQ Power Administrator</div>
+        <p>The ground breaking ceremony marked the official start of HQ Power Project, attended by key stakeholders and officials.</p>
+        <button class="read-more" data-modal="modal-groundbreaking">Read More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal 1: Social Responsibility Milestones -->
+  <div class="modal-bg" id="modal1">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/news1.jpg" alt="Social Responsibility Milestones">
+      <h2>HQPOWER SOCIAL RESPONSIBILITY PROJECTS ACHIEVED MILESTONES 2020-2021</h2>
+      <div class="meta">November 2, 2021 · By HQ Power Administrator</div>
+      <section>
+        <p>HQ Power is committed to integrating itself in the community and becoming a main actor on the economic and social welfare of the Mamba Sector community where it works. Beyond the various authorizations and contractual agreement with Rwandese authorities, HQ Power sees herself as a guest in the Akanyaru community and Gisagara District in large. To that purpose, HQ Power is dedicated to being a good neighbor and improve the living standards of the community. Apart from local people employment, local purchasing, and the compensations offered to the project affected persons (PAPs) through land expropriation; HQ Power has developed a Corporate Social Responsibility program around different thematic areas that continue to be enhanced over time during the lifespan of the project. Amongst the key areas include education, housing, health, and livelihood restoration / resilience programs (on agriculture and domestic animals – pig and cow project targeting vulnerable persons.)</p>
+      </section>
+      <section>
+        <h3>Education – Support to Kabumbwe Primary School</h3>
+        <img src="assets/education.jpg" alt="Repurposed library container">
+        <img src="assets/Education_2.jpg" alt="Another education image">
+        <p>On 11th May 2021 HQ Power project donated a 40 ft container to Kabumbwe Primary School for the library purpose. The 40ft container was repurposed into a library that is expected to serve over 1700 pupils enrolled at Kabumbwe Primary School. Key improvements were made to transform and remodel the container into a usable library resource room. This included installation of two (2) glass windows, a front door, electrical installations, painting of both internal and the exterior, fixing of bookshelves and ventilation equipment’s. Further HQ Power mobilized resources through fundraising and equipped the library with the required number of books per class as guided by the school management. In an effort to enhance proper sanitary hygiene at the primary school, Yumn Project also constructed a block of toilet with six (6) rooms including a special room designed to serve persons living with disabilities. The block of toilets are expected to reduce congestion on the existing facilities, serve both boys and girls in order to improve on the overall hygiene at the school.</p>
+      </section>
+      <section>
+        <h3>Housing – Community low-cost housing project</h3>
+        <img src="assets/low_costnews.jpg" alt="Community low-cost housing">
+        <img src="assets/low_cost_news_1.jpg" alt="Another housing image">
+        <p>As part of support for vulnerable persons, Yumn Ltd -HQ Power Project linked up with the local Mamba Sector authorities on 10th August 2020 to commence on an ambitious project meant to construct 33 low-cost houses in Kabumbwe cell. As of November 2021, all the 33 low-cost houses targeted to be constructed were completed and handed over to the beneficiaries. The handover event was graced by the acting Mayor for Gisagara Mr. NTAGANZWA Atanas, Mamba Sector Executive Secretary Mr. Eugene MANIRARORA, HQ Power Project chairperson Mr. Ahmet Karasoy accompanied by the project manager Mr. Tonci Tadic amongst other invited guests. Madam AHOBANTEGEYE Domithiria a Mother of 9 children pictured with 5 below, expressed her joy of receiving a house.</p>
+      </section>
+      <section>
+        <h3>Health – Muetelle de sante</h3>
+        <!-- <img src="assets/health.jpg" alt="Health insurance support"> -->
+        <p>Yumn Limited -HQ Power project committed to support vulnerable PAP households with Muetelle de sante health insurance cover. In the financial year 2019/2020 the Project covered 561 households with 2,000 beneficiaries, whereas in 2021/2022 financial year the project covered 189 households with 1,000 beneficiaries. The health insurance targets both Yumn project affected persons (PAPs) / households, and at large the vulnerable families in Mamba Sector – the local authority hosting the project. This is meant ensure healthy lives and promote well-being for all in line with global sustainable development goal (SDG) and Rwanda community-based health insurance program (or CBHI) on universal access for all.</p>
+      </section>
+      <section>
+        <h3>Livelihoods Restoration program / Resilience – Cow & Pig Project</h3>
+        <img src="assets/news_cows.png" alt="Cow and Pig Project">
+        <p>Yumn Limited – HQ Power understands that the peat production operations have impacted on the livelihoods of families who relied on peat land for their farming activities. The project has hence embarked on improving and enhancing the local people livelihoods to better status than pre-project levels through enhancing their households’ incomes. Apart from prioritizing households affected by the project in the employment policy, HQ power has a project aimed towards provision of Cows and Pigs to the vulnerable households. From November 2020 through March 2021, a total of 3 cows and 57 pigs were donated to 60 households serving approximately 240 family members within Kabumbwe and Gakoma cells of Mamba Sector. It is anticipated that as a result, the household head’s ability to provide for their household’s needs will improve from the sale of offspring’s, milk, and application of organic manure to their farms which will increase food production. In the financial year 2021 /2022, Yumn project has targeted 51 vulnerable households with approximately 200 family members to benefit from the Cow / Pig / chicken donation project.</p>
+      </section>
+      <section>
+        <h3>Water- Access to safe drinking water</h3>
+        <img src="assets/water.png" alt="Water tank rehabilitation">
+        <p>Yumn Ltd -HQ Power Project supported Gakoma Catholic Church Parish – Nun’s housing to rehabilitate two water tanks of 5,000 liter’s each which were dilapidated and abandoned. The tanks are anticipated to serve not only the nuns housing but the worshippers at Gakoma Catholic Church Parish in mamba Sector. The rehabilitation works of the two tanks involved plastering and interior works, installation of roofing, exterior cleaning and re- connection to the main water supply line. The Church and Parish in general were thankful to the Project Management for the noble act.</p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 2: COVID-19 Support -->
+  <div class="modal-bg" id="modal2">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <!-- <img src="assets/news_2.jpg" alt="HQ Power COVID-19 Support"> -->
+      <h2>HQ Power extends a helping hand to the vulnerable Families during COVID-19 lockdown</h2>
+      <div class="meta">May 2020 · By HQ Power Administrator</div>
+      <section>
+        <p>
+          HQ Power Project operating in Rwanda, recently made a donation of <b>Rwf 2 million</b> to Solid Africa, a local non-profit organisation that supports vulnerable patients in public hospitals.
+        </p>
+        <!-- Add an image representing the donation or Solid Africa here -->
+        <!-- <img src="assets/covid-donation.jpg" alt="HQ Power donation to Solid Africa"> -->
+        <p>
+          This contribution will help finance the supply of <b>2,591 meals</b> to economically disadvantaged patients in four public hospitals across the City of Kigali: CHUK, Kibagabaga, Muhima, and Masaka.
+        </p>
+      </section>
+      <section>
+        <p>
+          According to Isabel Kamariza, President and Founder of Solid Africa, most patients under the food programme come from remote areas, making it difficult for their families to bring them food every day, especially during the lockdown.
+        </p>
+        <!-- Add an image of Solid Africa or meal delivery here -->
+        <!-- <img src="assets/solid-africa-meals.jpg" alt="Solid Africa meal delivery"> -->
+        <p>
+          Before the coronavirus outbreak, Solid Africa prepared 400 meals daily. After lockdown measures, the number doubled to 800 per day.
+        </p>
+        <blockquote style="background:#f4f7fa;padding:1rem 1.5rem;border-left:4px solid #ffd600;margin:1.5rem 0;font-style:italic;">
+          “When someone is sick but gets cared for and eats healthily, they worry less and recover much quicker.”<br>
+          <span style="font-weight:600;">— Isabel Kamariza, Solid Africa</span>
+        </blockquote>
+      </section>
+      <section>
+        <p>
+          Through five programmes, Solid Africa provides food, hygienic products, and non-insured medicaments to accelerate patient recovery, preserve dignity, and promote equity.
+        </p>
+        <p>
+          Founded in 2011, Solid Africa now cooks and delivers <b>2,400 meals a day</b> to 800 patients around Kigali. Their kitchen, the first industrial in Rwanda, can cook up to 15,000 meals per day.
+        </p>
+      </section>
+      <section>
+        <blockquote style="background:#f4f7fa;padding:1rem 1.5rem;border-left:4px solid #1976d2;margin:1.5rem 0;font-style:italic;">
+          “If you want to heal somebody, feeding them is very important. Food is the best medicine.”<br>
+          <span style="font-weight:600;">— Dov Savidor, Chief Operations Officer at HQ Power</span>
+        </blockquote>
+        <p>
+          HQ Power has marked a tremendous impact on the Rwandan community, specifically in Gisagara District of the Southern Province.
+        </p>
+      </section>
+      <section>
+        <p>
+          Despite being only four years old in Rwanda, HQ Power—a joint venture between Turkish Hakan Madencilik Ve Electrik and Quantum Power—will soon complete the largest private power plant in the country with 80 MW installed capacity.
+        </p>
+        <p>
+          This facility will connect to the national grid, contributing 70 megawatts—enough to power 300,000 households and new industries.
+        </p>
+        <!-- Add an image of the power plant or community here -->
+        <!-- <img src="assets/power-plant.jpg" alt="HQ Power Plant"> -->
+      </section>
+      <section>
+        <p>
+          HQ Power has also brought together around 250 people from the community into a cooperative, providing daily work and incomes 2.5 times higher than before. At least 1,500 employees have worked on the project, most from Gisagara District.
+        </p>
+        <p>
+          As part of its social development, the company provides capacity building, job opportunities, prioritizes local residents, covers community-based health insurance for poor families, and has contributed to refurbishing a local school.
+        </p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 3: Minister Visit -->
+  <div class="modal-bg" id="modal3">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/Minister_Visit_1.jpg" alt="Minister Visit HQ Power">
+      <h2>Minister of Infrastructure and State Minister Visit HQ Power Project</h2>
+      <div class="meta">June 8, 2018 · Gisagara District, Rwanda</div>
+      <section>
+        <p>
+          The Minister of Infrastructure and State Minister of Water and Sanitation visited HQ Power Project at Kabumbwe Cell, Mamba Sector, Gisagara District in the Southern Province of Rwanda, where construction works are ongoing.
+        </p>
+        <img src="assets/Minister-with-CEO.jpg" alt="Ministerial Delegation at HQ Power">
+      </section>
+      <section>
+        <p>
+          The delegation comprised Hon. Minister of Infrastructure Amb. Claver GATETE and his team, State Minister of Energy and Water Sanitation Mrs. Germaine KAMAYIRESE and her team, Rwanda Energy Group Limited (REG), Water and Sanitation Corporation (WASAC), and Rwanda Transport Development Agency.
+        </p>
+        <img src="assets/Meeting-with_Minister.jpg" alt="Delegation Group Photo">
+      </section>
+      <section>
+        <p>
+          The visitors were received at the site by the HQ Power managerial team headed by Mr. Hakan KARASOY (Chief Executive Officer).
+        </p>
+        <img src="assets/CEO-With_Minister_2.jpg" alt="HQ Power Team Receiving Ministers">
+      </section>
+      <section>
+        <p>
+          The visitors proceeded to the site office for a presentation by Mr. Gaurav Bhasin (Project Director – SP EPC) on project progress, timelines, and resource requirements such as start-up power, water for construction, and roads for consignment movements.
+        </p>
+        <p>
+          The team received a brief Health, Safety and Environment orientation, then toured the site where Mr. Hakan KARASOY (CEO) and Jussi NAKARI (Project Director) explained ongoing activities and progress.
+        </p>
+        <img src="assets/site-tour.jpg" alt="Site Tour with Project Directors">
+      </section>
+      <section>
+        <figure style="margin:0;">
+          <!-- <img src="assets/Construction Area.jpg" alt="Minister, CEO, and State Minister"> -->
+          <figcaption style="font-size:0.97rem;color:#666;text-align:center;margin-top:0.5rem;">
+            Minister of Infrastructure Amb. Claver GATETE (left), Mr. Hakan KARASOY (CEO, center), and State Minister of Energy and Water Sanitation Mrs. Germaine KAMAYIRESE (right).
+          </figcaption>
+        </figure>
+      </section>
+      <section>
+        <p>
+          After visiting the construction activities, Minister of Infrastructure Amb. Claver GATETE appreciated the progress of Rwanda's first Peat to Power Plant.
+        </p>
+      </section>
+      <section>
+        <p>
+          The visitors moved to the Residential Compound for refreshments and lunch.
+        </p>
+        <img src="assets/Construction Area.jpg" alt="Construction Area">
+        <figcaption style="font-size:0.97rem;color:#666;text-align:center;margin-top:0.5rem;">
+          Construction Area 
+        </figcaption>
+      </section>
+      <section>
+        <img src="assets/Residential Compound.jpg" alt="Residential Compound">
+        <figcaption style="font-size:0.97rem;color:#666;text-align:center;margin-top:0.5rem;">
+          Residential Compound 
+        </figcaption>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal 4: IJGlobal Award -->
+  <div class="modal-bg" id="modal-award">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/ijglobal-award.jpg" alt="IJGlobal Award">
+      <h2>HQPOWER WINS IJGLOBAL AWARD</h2>
+      <div class="meta">2024 · By HQ Power Administrator</div>
+      <section>
+        <p>HQPOWER is honored to receive the prestigious IJGlobal Award for excellence in infrastructure and energy projects.</p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 5: Donation to Gisagara Primary School -->
+  <div class="modal-bg" id="modal-gisagara">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/gisagara-donation.jpg" alt="Donation to Gisagara Primary School">
+      <h2>HQ POWER AND SHAPOORJI PALLONJI RWANDA DONATE 16M RWF WORTH OF MATERIALS TO GISAGARA PRIMARY SCHOOL</h2>
+      <div class="meta">2023 · By HQ Power Administrator</div>
+      <section>
+        <p>HQ Power and Shapoorji Pallonji Rwanda have donated materials worth 16 million RWF to support education in Gisagara District.</p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 6: Certificate of Recognition -->
+  <div class="modal-bg" id="modal-certificate">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/certificate.jpg" alt="Certificate of Recognition">
+      <h2>CERTIFICATE OF RECOGNITION</h2>
+      <div class="meta">2023 · By HQ Power Administrator</div>
+      <section>
+        <p>HQ Power receives a certificate of recognition for outstanding contribution to the community and energy sector.</p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 7: Governor Visit -->
+  <div class="modal-bg" id="modal-governor">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/governor-visit.jpg" alt="Governor Visit HQ Power">
+      <h2>GOVERNOR OF THE SOUTHERN PROVINCE VISIT THE HQ POWER PROJECT</h2>
+      <div class="meta">2023 · By HQ Power Administrator</div>
+      <section>
+        <p>The Governor of the Southern Province visited HQ Power Project to witness progress and community impact.</p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 8: Finnfund Delegation Visit -->
+  <div class="modal-bg" id="modal-finnfund">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/finnfund-visit.jpg" alt="Finnfund Delegation Visit HQ Power">
+      <h2>FINNFUND DELEGATION VISIT THE HQ POWER PROJECT</h2>
+      <div class="meta">2023 · By HQ Power Administrator</div>
+      <section>
+        <p>A delegation from Finnfund visited HQ Power Project to discuss sustainable investment and development.</p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 9: Donation to Genocide Survivors -->
+  <div class="modal-bg" id="modal-genocide">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/genocide-donation.jpg" alt="Donation to Genocide Survivors">
+      <h2>DONATES TO GENOCIDE SURVIVORS</h2>
+      <div class="meta">2023 · By HQ Power Administrator</div>
+      <section>
+        <p>HQ Power made a donation to support genocide survivors, reaffirming its commitment to social responsibility.</p>
+      </section>
+    </div>
+  </div>
+  <!-- Modal 10: Ground Breaking Ceremony -->
+  <div class="modal-bg" id="modal-groundbreaking">
+    <div class="modal">
+      <button class="close-btn" aria-label="Close">&times;</button>
+      <img src="assets/groundbreaking.jpg" alt="Ground Breaking Ceremony HQ Power">
+      <h2>GROUND BREAKING CEREMONY</h2>
+      <div class="meta">2023 · By HQ Power Administrator</div>
+      <section>
+        <p>The ground breaking ceremony marked the official start of HQ Power Project, attended by key stakeholders and officials.</p>
+      </section>
+    </div>
+  </div>
 
   <footer>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="contact.html">Contact</a>
-      <a href="news.html">News</a>
-    </div>
-    <p>&copy; 2025 HQ Power Rwanda. All rights reserved.</p>
+    &copy; 2025 HQ Power Rwanda. All rights reserved.
   </footer>
+  <script>
+    // Modal logic
+    document.querySelectorAll('.read-more').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.getElementById(this.dataset.modal).classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelectorAll('.modal-bg').forEach(bg => {
+      bg.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      bg.querySelector('.close-btn').addEventListener('click', function() {
+        bg.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+    // Optional: ESC key closes modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        document.querySelectorAll('.modal-bg.active').forEach(bg => {
+          bg.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
