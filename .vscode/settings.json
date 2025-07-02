@@ -1,3 +1,7 @@
 {
-    "liveServer.settings.port": 5501
+    "workbench.editor.alwaysShowEditorActions": true,
+    "workbench.editor.autoLockGroups": {
+        "default": true,
+        "notebookOutputEditor": true
+    }
 }
