@@ -12,35 +12,37 @@
 </head>
 <body>
   <!-- Universal Navigation Bar: Place just after <body> on every page -->
-  <nav class="navbar-horizontal glass-nav">
-    <a href="index.html" class="logo">
-      <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
-    </a>
-    <ul class="nav-links-horizontal" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li class="dropdown who-dropdown">
-        <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
-        <div class="dropdown-content">
-          <a href="about.html#management" class="who-link" data-tab="management">Management</a>
-          <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
-          <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
-          <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
-        </div>
-      </li>
-      <li class="dropdown project-dropdown-nav">
-        <a href="project.html" class="dropbtn">The Project &#9662;</a>
-        <div class="dropdown-content">
-          <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
-          <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
-          <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
-        </div>
-      </li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-    </ul>
-    <div class="menu-toggle" id="menuToggle">&#9776;</div>
-  </nav>
+  <!-- Universal Floating Navigation Bar -->
+<nav class="navbar-horizontal glass-nav">
+  <a href="index.html" class="logo">
+    <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
+  </a>
+  <ul class="nav-links-horizontal" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li class="dropdown who-dropdown">
+      <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
+      <div class="dropdown-content">
+        <a href="about.html#management" class="who-link" data-tab="management">Management</a>
+        <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
+        <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
+        <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
+      </div>
+    </li>
+    <li class="dropdown project-dropdown-nav">
+      <a href="project.html" class="dropbtn">The Project &#9662;</a>
+      <div class="dropdown-content">
+        <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
+        <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
+        <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+        <a href="news.html#news" class="project-nav-link" data-target="news">News</a>
+      </div>
+    </li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+   <!-- <li><a href="gallery.html">Gallery</a></li> -->
+  </ul>
+  <div class="menu-toggle" id="menuToggle">&#9776;</div>
+</nav>
 
   <header>
  </header>
@@ -79,3 +81,71 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
+<style>
+/* Universal Floating Navigation Bar */
+.navbar-horizontal {
+  background: rgba(255,255,255,0.97);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
+  position: fixed; /* Always fixed at the top */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  transition: box-shadow 0.3s, background 0.3s;
+  animation: navFadeIn 1s cubic-bezier(.4,0,.2,1);
+  backdrop-filter: blur(6px);
+}
+@keyframes navFadeIn {
+  from { opacity: 0; transform: translateY(-30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.main-content {
+  margin-top: 90px; /* Adjust if navbar height changes */
+}
+@media (max-width: 900px) {
+  .navbar-horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.7rem 1rem;
+  }
+  .main-content {
+    margin-top: 110px;
+  }
+  .nav-links-horizontal {
+    flex-direction: column;
+    background: rgba(255,255,255,0.97);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+    z-index: 1002;
+    width: 100vw;
+    animation: navFadeIn 0.5s;
+  }
+  .nav-links-horizontal.open {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  .navbar-horizontal {
+    padding: 0.5rem 0.5rem;
+  }
+  .main-content {
+    margin-top: 120px;
+  }
+  .nav-links-horizontal a {
+    font-size: 1em;
+    padding: 0.7em 1em;
+  }
+}
+</style>

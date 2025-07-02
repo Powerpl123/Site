@@ -288,10 +288,143 @@
       margin-top: 1em;
       font-weight: 500;
     }
+
+    /* Universal Floating Navigation Bar */
+    .navbar-horizontal {
+      background: rgba(255,255,255,0.97);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
+      position: fixed; /* <-- changed from sticky to fixed */
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 1000;
+      transition: box-shadow 0.3s, background 0.3s;
+      animation: navFadeIn 1s cubic-bezier(.4,0,.2,1);
+      backdrop-filter: blur(6px);
+    }
+    @keyframes navFadeIn {
+      from { opacity: 0; transform: translateY(-30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .navbar-horizontal .logo img {
+      height: 48px;
+      transition: transform 0.2s;
+    }
+    .navbar-horizontal .logo img:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .nav-links-horizontal {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links-horizontal li {
+      position: relative;
+    }
+    .nav-links-horizontal a {
+      color: #1976d2;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.08em;
+      padding: 0.5em 0.9em;
+      border-radius: 0.7em;
+      transition: background 0.18s, color 0.18s;
+    }
+    .nav-links-horizontal a:hover,
+    .nav-links-horizontal .dropbtn:hover {
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #fff;
+      min-width: 180px;
+      box-shadow: 0 8px 24px rgba(33,150,243,0.13);
+      border-radius: 0.7em;
+      z-index: 1001;
+      top: 110%;
+      left: 0;
+      animation: dropdownFade 0.3s;
+    }
+    @keyframes dropdownFade {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: block;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.7em 1.2em;
+      color: #1976d2;
+      border-radius: 0.7em;
+      font-size: 1em;
+    }
+    .dropdown-content a:hover {
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2em;
+      color: #1976d2;
+      cursor: pointer;
+      margin-left: 1em;
+    }
+    @media (max-width: 900px) {
+      .navbar-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.7rem 1rem;
+      }
+      .main-content {
+        margin-top: 110px; /* Adjust for taller nav on mobile */
+      }
+      .nav-links-horizontal {
+        flex-direction: column;
+        background: rgba(255,255,255,0.97);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+        z-index: 1002;
+        width: 100vw;
+        animation: navFadeIn 0.5s;
+      }
+      .nav-links-horizontal.open {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar-horizontal {
+        padding: 0.5rem 0.5rem;
+      }
+      .main-content {
+        margin-top: 120px; /* Adjust for even taller nav on small screens */
+      }
+      .nav-links-horizontal a {
+        font-size: 1em;
+        padding: 0.7em 1em;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
+  <!-- Universal Floating Navigation Bar -->
   <nav class="navbar-horizontal glass-nav">
     <a href="index.html" class="logo">
       <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
@@ -318,7 +451,7 @@
       </li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
+     <!-- <li><a href="gallery.html">Gallery</a></li> -->
     </ul>
     <div class="menu-toggle" id="menuToggle">&#9776;</div>
   </nav>

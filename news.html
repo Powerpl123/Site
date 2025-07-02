@@ -15,16 +15,70 @@
       margin: 0;
       color: #222;
     }
+    /* Universal Floating Navigation Bar */
     .navbar-horizontal {
-      background: #fff;
+      background: rgba(255,255,255,0.97);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
-      position: sticky;
+      position: fixed; /* Always fixed at the top */
       top: 0;
+      left: 0;
+      width: 100vw;
       z-index: 1000;
+      transition: box-shadow 0.3s, background 0.3s;
+      animation: navFadeIn 1s cubic-bezier(.4,0,.2,1);
+      backdrop-filter: blur(6px);
+    }
+    @keyframes navFadeIn {
+      from { opacity: 0; transform: translateY(-30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .main-content {
+      margin-top: 90px; /* Adjust if navbar height changes */
+    }
+    @media (max-width: 900px) {
+      .navbar-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.7rem 1rem;
+      }
+      .main-content {
+        margin-top: 110px;
+      }
+      .nav-links-horizontal {
+        flex-direction: column;
+        background: rgba(255,255,255,0.97);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+        z-index: 1002;
+        width: 100vw;
+        animation: navFadeIn 0.5s;
+      }
+      .nav-links-horizontal.open {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+    @media (max-width: 600px) {
+      .navbar-horizontal {
+        padding: 0.5rem 0.5rem;
+      }
+      .main-content {
+        margin-top: 120px;
+      }
+      .nav-links-horizontal a {
+        font-size: 1em;
+        padding: 0.7em 1em;
+      }
     }
     .navbar-horizontal .logo img {
       height: 44px;
@@ -210,7 +264,7 @@
       </li>
       <li><a href="careers.html">Careers</a></li>
       <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
+     <!-- <li><a href="gallery.html">Gallery</a></li> -->
     </ul>
     <div class="menu-toggle" id="menuToggle">&#9776;</div>
   </nav>

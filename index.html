@@ -2,13 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HQ Power Rwanda | Peat Power for Rwanda's Growth</title>
   <link rel="icon" type="image/x-icon" href="Images/Logo.jpg">
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* Floating and sticky navigation bar */
+    .navbar-horizontal {
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 1000;
+      transition: box-shadow 0.2s;
+    }
+    .main-content {
+      margin-top: 90px; /* Adjust if navbar height changes */
+    }
+    /* Hero Section Slideshow */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-img {
+      object-fit: cover;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(.4,0,.2,1);
+      z-index: 0;
+    }
+    .hero-bg-img.active {
+      opacity: 1;
+      z-index: 1;
+      animation: fadeInZoom 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeInZoom {
+      from { opacity: 0; transform: scale(1.07);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+      padding: 2rem 1rem;
+    }
+    .hero-content h1 {
+      font-size: 2.7em;
+      font-weight: 800;
+      margin-bottom: 0.3em;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 12px rgba(33,150,243,0.13);
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      color: #fffde7;
+      margin-bottom: 1.5em;
+      font-weight: 500;
+      text-shadow: 0 2px 8px rgba(33,150,243,0.10);
+    }
+    .discover-btn {
+      background: #ffd600;
+      color: #1976d2;
+      border: none;
+      border-radius: 1em;
+      padding: 0.7em 2em;
+      font-size: 1.1em;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(255,214,0,0.10);
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+      margin-top: 1em;
+    }
+    .discover-btn:hover {
+      background: #1976d2;
+      color: #ffd600;
+    }
     .features-section {
       display: flex;
       flex-wrap: wrap;
@@ -142,48 +228,186 @@
       background: #1976d2;
     }
     @media (max-width: 900px) {
+      .navbar-horizontal {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.7rem 1rem;
+      }
+      .main-content {
+        margin-top: 110px;
+      }
+      .hero-content h1 {
+        font-size: 2em;
+      }
+      .hero-content p {
+        font-size: 1em;
+      }
       .features-section { flex-direction: column; gap: 1.5rem; }
       .testimonials-grid { flex-direction: column; gap: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .navbar-horizontal {
+        padding: 0.5rem 0.5rem;
+      }
+      .main-content {
+        margin-top: 120px;
+      }
+      .hero-content {
+        padding: 1.2rem 0.3rem;
+      }
+      .hero-content h1 {
+        font-size: 1.3em;
+      }
+      .discover-btn {
+        font-size: 1em;
+        padding: 0.6em 1.2em;
+      }
+    }
+    /* Mobile nav toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 2em;
+      color: #1976d2;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    @media (max-width: 900px) {
+      .nav-links-horizontal {
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+        z-index: 1002;
+      }
+      .nav-links-horizontal.open {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Chairman Quote Section */
+    .chairman-quote-section {
+      background: linear-gradient(90deg, #e3f2fd 0%, #fffde7 100%);
+      padding: 3rem 1rem 2.5rem 1rem;
+      border-radius: 1.5em;
+      margin: 3rem auto 2rem auto;
+      max-width: 950px;
+      box-shadow: 0 4px 32px 0 rgba(33,150,243,0.10);
+    }
+    .chairman-quote-container {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .chairman-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 1.2em;
+      object-fit: cover;
+      box-shadow: 0 4px 24px rgba(33,150,243,0.13);
+      border: 4px solid #fff;
+      background: #fff;
+      transition: transform 0.25s;
+    }
+    .chairman-photo:hover {
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 0 8px 32px rgba(33,150,243,0.18);
+    }
+    .chairman-quote-content {
+      max-width: 600px;
+    }
+    .chairman-quote {
+      font-size: 1.25em;
+      color: #333;
+      font-style: italic;
+      margin-bottom: 1.2em;
+      line-height: 1.6;
+      position: relative;
+    }
+    .quote-icon {
+      color: #ffd600;
+      font-size: 1.2em;
+      vertical-align: middle;
+      margin: 0 0.2em;
+      opacity: 0.7;
+    }
+    .chairman-name {
+      font-weight: 700;
+      color: #1976d2;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .chairman-name span {
+      color: #ff9800;
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+    @media (max-width: 700px) {
+      .chairman-quote-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+      .chairman-quote-content {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Universal Navigation Bar: Place just after <body> on every page -->
-  <nav class="navbar-horizontal glass-nav">
-    <a href="index.html" class="logo">
-      <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
-    </a>
-    <ul class="nav-links-horizontal" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li class="dropdown who-dropdown">
-        <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
-        <div class="dropdown-content">
-          <a href="about.html#management" class="who-link" data-tab="management">Management</a>
-          <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
-          <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
-          <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
-        </div>
-      </li>
-      <li class="dropdown project-dropdown-nav">
-        <a href="project.html" class="dropbtn">The Project &#9662;</a>
-        <div class="dropdown-content">
-          <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
-          <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
-          <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
-          <a href="news.html#news" class="project-nav-link" data-target="news">News</a>
-        </div>
-      </li>
-      <li><a href="careers.html">Careers</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-    </ul>
-    <div class="menu-toggle" id="menuToggle">&#9776;</div>
-  </nav>
+  <!-- Universal Floating Navigation Bar -->
+<nav class="navbar-horizontal glass-nav">
+  <a href="index.html" class="logo">
+    <img src="assets/Logo.png" alt="HQ Power Rwanda Logo" />
+  </a>
+  <ul class="nav-links-horizontal" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li class="dropdown who-dropdown">
+      <a href="about.html" class="dropbtn">Who We Are &#9662;</a>
+      <div class="dropdown-content">
+        <a href="about.html#management" class="who-link" data-tab="management">Management</a>
+        <a href="about.html#stakeholders" class="who-link" data-tab="stakeholders">Stakeholders</a>
+        <a href="about.html#lenders" class="who-link" data-tab="lenders">Lenders</a>
+        <a href="about.html#partners" class="who-link" data-tab="partners">Partners</a>
+      </div>
+    </li>
+    <li class="dropdown project-dropdown-nav">
+      <a href="project.html" class="dropbtn">The Project &#9662;</a>
+      <div class="dropdown-content">
+        <a href="project.html#peat-production" class="project-nav-link" data-target="peat-production">Peat Production</a>
+        <a href="project.html#power-plant" class="project-nav-link" data-target="power-plant">Power Plant</a>
+        <a href="project.html#gallery" class="project-nav-link" data-target="gallery">Gallery</a>
+        <a href="news.html#news" class="project-nav-link" data-target="news">News</a>
+      </div>
+    </li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+    <!-- <li><a href="gallery.html">Gallery</a></li> -->
+  </ul>
+  <div class="menu-toggle" id="menuToggle">&#9776;</div>
+</nav>
 
   <main class="main-content">
     <!-- Hero Section -->
-    <section class="hero animate-fade-in">
-      <div class="hero-content">
+    <section class="hero animate-fade-in" style="position:relative; overflow:hidden;">
+      <!-- Slideshow background images -->
+      <div id="hero-slideshow" style="position:absolute; inset:0; z-index:0; width:100%; height:100%;">
+        <img src="assets/Hero_header_1.jpg" class="hero-bg-img active" alt="Hero_header 1">
+        <img src="assets/Hero_header_2.png" class="hero-bg-img" alt="Hero_header 2">
+        <img src="assets/Hero_header_3.jpg" class="hero-bg-img" alt="Hero_header 3">
+        <div style="position:absolute; inset:0; background:linear-gradient(90deg,rgba(33,150,243,0.25) 0%,rgba(0,0,0,0.25) 100%);"></div>
+      </div>
+      <div class="hero-content" style="position:relative; z-index:1;">
         <h1>
           <span class="highlight">HQ Power Rwanda</span>
         </h1>
@@ -205,6 +429,21 @@
         <svg viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <path fill="#fff" fill-opacity="0.35" d="M0,80 C360,160 1080,0 1440,80 L1440,180 L0,180 Z"/>
         </svg>
+      </div>
+    </section>
+
+    <!-- Chairman Quote Section -->
+    <section class="chairman-quote-section">
+      <div class="chairman-quote-container">
+        <img src="Images/Director-150x150.jpg" alt="Chairman Ahmet N. Karasoy" class="chairman-photo" />
+        <div class="chairman-quote-content">
+          <p class="chairman-quote">
+            <i class="fas fa-quote-left quote-icon"></i>
+            HQ Power will generate electricity at a cheaper price by using local resources in a sustainable way and substituting expensive diesel and heavy fuel oil generators.
+            <i class="fas fa-quote-right quote-icon"></i>
+          </p>
+          <div class="chairman-name">AHMET N. KARASOY, <span>CHAIRMAN</span></div>
+        </div>
       </div>
     </section>
 
@@ -389,6 +628,17 @@
   </footer>
   <script src="js/main.js"></script>
   <script>
+    // Hero image slideshow
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelectorAll(".hero-bg-img");
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 9000); // 9 seconds
+    });
+
     // Animated counting for stats in Our Power Plant section
     function animateCount(id, end, duration) {
       const el = document.getElementById(id);
