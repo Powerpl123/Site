@@ -75,8 +75,6 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
     }
     .news-card:hover {
       transform: translateY(-6px) scale(1.02);
@@ -402,6 +400,75 @@
     @media (max-width: 600px) {
       body { padding-top: 54px; }
     }
+    /* New Styles for News Box */
+    .news-card {
+      border: 1px solid #ddd;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .news-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #1976d2;
+      font-weight: 800;
+    }
+
+    .news-card .read-more-btn {
+      margin-top: 1em;
+      background: #ffd600;
+      color: #1976d2;
+      border: none;
+      border-radius: 0.7em;
+      padding: 0.5em 1.2em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .news-card .read-more-btn:hover {
+      background: #1976d2;
+      color: #ffd600;
+    }
+
+    .news-card .news-details {
+      display: none;
+      margin-top: 1em;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .news-card .news-details.open {
+      display: block;
+    }
+
+    /* Responsive adjustments for news card */
+    @media (max-width: 600px) {
+      .news-card {
+        padding: 1rem;
+      }
+      .news-card h3 {
+        font-size: 1.2rem;
+      }
+      .news-card .read-more-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+      .news-card .news-details {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -446,7 +513,7 @@
       <img src="assets/news1.jpg" alt="Social Responsibility Milestones">
       <div class="news-content">
         <h2>HQPower Social Responsibility Projects Achieved Milestones 2020-2021</h2>
-        <div class="meta">November 2, 2021 · By HQ Power Administrator</div>
+       <!-- <div class="meta">November 2, 2021 · By HQ Power Administrator</div> -->
         <p>HQ Power is committed to integrating itself in the community and becoming a main actor on the economic and social welfare of the Mamba Sector community where it works...</p>
         <button class="read-more" data-modal="modal1">Read More</button>
       </div>
@@ -456,7 +523,7 @@
       <img src="assets/news- 2 new.jpg" alt="COVID-19 Support">
       <div class="news-content">
         <h2>HQ Power Helps Vulnerable Families During COVID-19</h2>
-        <div class="meta">May 8, 2020 · By HQ Power Administrator</div>
+       <!-- <div class="meta">May 8, 2020 · By HQ Power Administrator</div> -->
         <p>HQ Power made a donation of Rwf 2 million to Solid Africa to supply meals to economically disadvantaged patients in four public hospitals...</p>
         <button class="read-more" data-modal="modal2">Read More</button>
       </div>
@@ -466,17 +533,17 @@
       <img src="assets/Minister_Visit_1.jpg" alt="Minister Visit">
       <div class="news-content">
         <h2>Minister of Infrastructure and State Minister Visit HQ</h2>
-        <div class="meta">June 8, 2018 · By HQ Power Administrator</div>
+       <!-- <div class="meta">June 8, 2018 · By HQ Power Administrator</div> -->
         <p>The visit took place at Kabumbwe Cell, Mamba Sector, Gisagara District in the Southern Province of Rwanda where the construction works are ongoing...</p>
         <button class="read-more" data-modal="modal3">Read More</button>
       </div>
     </div>
     <!-- News Card 4 -->
     <div class="news-card">
-      <img src="assets/ijglobal-award.jpg" alt="IJGlobal Award">
+      <img src="assets/AwardsAfrican Power Deal of the Year 2017.jpg" alt="IJGlobal Award">
       <div class="news-content">
         <h2>HQPOWER Wins IJGlobal Award</h2>
-        <div class="meta">2024 · By HQ Power Administrator</div>
+       <!-- <div class="meta">2024 · By HQ Power Administrator</div> -->
         <p>HQPOWER is honored to receive the prestigious IJGlobal Award for excellence in infrastructure and energy projects.</p>
         <button class="read-more" data-modal="modal-award">Read More</button>
       </div>
@@ -486,17 +553,17 @@
       <img src="assets/gisagara-donation.jpg" alt="Donation to Gisagara Primary School">
       <div class="news-content">
         <h2>HQ POWER AND SHAPOORJI PALLONJI RWANDA DONATE 16M RWF WORTH OF MATERIALS TO GISAGARA PRIMARY SCHOOL</h2>
-        <div class="meta">2023 · By HQ Power Administrator</div>
-        <p>HQ Power and Shapoorji Pallonji Rwanda have donated materials worth 16 million RWF to support education in Gisagara District.</p>
+       <!-- <div class="meta">Gisagara, 06th March 2018 · By HQ Power Administrator</div> -->
+        <p>HQ Power and Shapoorji Pallonji Rwanda have donated assorted scholastic materials to Kabumbwe Primary School in Mamba Sector, Gisagara District. The materials including bags, books, pens and pencils were given to pupils earlier this week...</p>
         <button class="read-more" data-modal="modal-gisagara">Read More</button>
       </div>
     </div>
     <!-- News Card 6 -->
     <div class="news-card">
-      <img src="assets/certificate.jpg" alt="Certificate of Recognition">
+      <img src="assets/certificate-recognition.jpg" alt="Certificate of Recognition">
       <div class="news-content">
         <h2>CERTIFICATE OF RECOGNITION</h2>
-        <div class="meta">2023 · By HQ Power Administrator</div>
+        <!-- <div class="meta">2023 · By HQ Power Administrator</div> -->
         <p>HQ Power receives a certificate of recognition for outstanding contribution to the community and energy sector.</p>
         <button class="read-more" data-modal="modal-certificate">Read More</button>
       </div>
@@ -536,9 +603,40 @@
       <img src="assets/groundbreaking.jpg" alt="Ground Breaking Ceremony">
       <div class="news-content">
         <h2>GROUND BREAKING CEREMONY</h2>
-        <div class="meta">2023 · By HQ Power Administrator</div>
+       <!-- <div class="meta">2023 · By HQ Power Administrator</div> -->
         <p>The ground breaking ceremony marked the official start of HQ Power Project, attended by key stakeholders and officials.</p>
         <button class="read-more" data-modal="modal-groundbreaking">Read More</button>
+      </div>
+    </div>
+    <!-- News Box -->
+    <div class="news-card">
+      <h3>HQPOWER Wins IJGlobal Award</h3>
+      <button class="read-more-btn" onclick="this.nextElementSibling.classList.toggle('open')">Read more</button>
+      <div class="news-details">
+        <p>
+          HQ Power was awarded “African Power Deal of the Year 2017”.
+          <br><br>
+          <strong>Awards</strong><br>
+          HQ Power has been awarded the Africa Power Deal of the Year in the Infrastructure Journal Global Awards 2017 in a ceremony held in London, England. HQ Power being the first project of its kind in Africa (first peat power project in Africa) expected to increase 40% of national power capacity and it will bring more energy to the Country since it will use 100% of domestic fuel leading to reduction of imports. The plant is located in the southern province, Gisagara district.
+          <br><br>
+          The project will have 80 MV capacity and is expected to one of the biggest power plant in Rwanda when production starts in 2020. This will contribute to the country target of achieving 512 MV of installed power capacity by 2023/24 from 210.9 MV in 2017 as per the Rwanda Development Board numbers. This will improve access to electricity for the local population and promote a much need investment for a country which has been showing steady growth for the past 20 years.
+          <br><br>
+          HQ Power Project is owned by Hakan AS, a Turkish Energy Company and QUANTUM POWER, an international power company and THEMIS a project development company. Included lenders are AFC (Africa Finance Corporation) which served as the lead arranger for the debt, and other lenders like Finnfund, Trade and Development Bank (TDB), African Export-Import Bank, and the Development Bank of Rwanda.
+          <br><br>
+          <strong>About IJ Global Award</strong><br>
+          Africa Energy & Infrastructure Investment Forum (‘AEIIF’) is part of IJ Global’s Energy & Infrastructure Forums series focusing on opportunities in Africa, exploring successful approaches for mitigating risks and unlocking the huge potential of energy and infrastructure investments in Sub-Saharan Africa.  The award itself recognises an outstanding energy or water deal that has reached financial closure between 1 January 2017 and 31 December 2017, judged by a panel of leading industry experts.
+          <br><br>
+          <strong>Sponsors and Lenders</strong><br>
+          <img src="assets/sponsors-lenders.jpg" alt="Sponsors and Lenders" style="max-width:100%;border-radius:1em;margin:1em 0;">
+          <br>
+          <strong>SHAREHOLDERS</strong>
+          <br>
+          <img src="assets/shareholders.jpg" alt="Shareholders" style="max-width:100%;border-radius:1em;margin:1em 0;">
+          <br>
+          “We have to build it though. This means nothing without execution. Counting on every single person here to make it” said the Chief Executive Officer.
+          <br>
+          <img src="assets/ceo.jpg" alt="CEO" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        </p>
       </div>
     </div>
   </section>
@@ -549,7 +647,7 @@
       <button class="close-btn" aria-label="Close">&times;</button>
       <img src="assets/news1.jpg" alt="Social Responsibility Milestones">
       <h2>HQPOWER SOCIAL RESPONSIBILITY PROJECTS ACHIEVED MILESTONES 2020-2021</h2>
-      <div class="meta">November 2, 2021 · By HQ Power Administrator</div>
+     <!-- <div class="meta">November 2, 2021 · By HQ Power Administrator</div> -->
       <section>
         <p>HQ Power is committed to integrating itself in the community and becoming a main actor on the economic and social welfare of the Mamba Sector community where it works. Beyond the various authorizations and contractual agreement with Rwandese authorities, HQ Power sees herself as a guest in the Akanyaru community and Gisagara District in large. To that purpose, HQ Power is dedicated to being a good neighbor and improve the living standards of the community. Apart from local people employment, local purchasing, and the compensations offered to the project affected persons (PAPs) through land expropriation; HQ Power has developed a Corporate Social Responsibility program around different thematic areas that continue to be enhanced over time during the lifespan of the project. Amongst the key areas include education, housing, health, and livelihood restoration / resilience programs (on agriculture and domestic animals – pig and cow project targeting vulnerable persons.)</p>
       </section>
@@ -588,7 +686,7 @@
       <button class="close-btn" aria-label="Close">&times;</button>
       <!-- <img src="assets/news_2.jpg" alt="HQ Power COVID-19 Support"> -->
       <h2>HQ Power extends a helping hand to the vulnerable Families during COVID-19 lockdown</h2>
-      <div class="meta">May 2020 · By HQ Power Administrator</div>
+     <!-- <div class="meta">May 2020 · By HQ Power Administrator</div> -->
       <section>
         <p>
           HQ Power Project operating in Rwanda, recently made a donation of <b>Rwf 2 million</b> to Solid Africa, a local non-profit organisation that supports vulnerable patients in public hospitals.
@@ -656,7 +754,7 @@
       <button class="close-btn" aria-label="Close">&times;</button>
       <img src="assets/Minister_Visit_1.jpg" alt="Minister Visit HQ Power">
       <h2>Minister of Infrastructure and State Minister Visit HQ Power Project</h2>
-      <div class="meta">June 8, 2018 · Gisagara District, Rwanda</div>
+     <!-- <div class="meta">June 8, 2018 · Gisagara District, Rwanda</div> -->
       <section>
         <p>
           The Minister of Infrastructure and State Minister of Water and Sanitation visited HQ Power Project at Kabumbwe Cell, Mamba Sector, Gisagara District in the Southern Province of Rwanda, where construction works are ongoing.
@@ -719,11 +817,40 @@
   <div class="modal-bg" id="modal-award">
     <div class="modal">
       <button class="close-btn" aria-label="Close">&times;</button>
-      <img src="assets/ijglobal-award.jpg" alt="IJGlobal Award">
+      <img src="assets/AwardsAfrican Power Deal of the Year 2017.jpg" alt="IJGlobal Award">
       <h2>HQPOWER WINS IJGLOBAL AWARD</h2>
-      <div class="meta">2024 · By HQ Power Administrator</div>
+     <!-- <div class="meta">2024 · By HQ Power Administrator</div> -->
       <section>
-        <p>HQPOWER is honored to receive the prestigious IJGlobal Award for excellence in infrastructure and energy projects.</p>
+        <p>
+          HQ Power was awarded “African Power Deal of the Year 2017”.
+        </p>
+        <p>
+          <strong>Awards</strong><br>
+          HQ Power has been awarded the Africa Power Deal of the Year in the Infrastructure Journal Global Awards 2017 in a ceremony held in London, England. HQ Power being the first project of its kind in Africa (first peat power project in Africa) expected to increase 40% of national power capacity and it will bring more energy to the Country since it will use 100% of domestic fuel leading to reduction of imports. The plant is located in the southern province, Gisagara district.
+        </p>
+        <p>
+          The project will have 80 MV capacity and is expected to one of the biggest power plant in Rwanda when production starts in 2020. This will contribute to the country target of achieving 512 MV of installed power capacity by 2023/24 from 210.9 MV in 2017 as per the Rwanda Development Board numbers. This will improve access to electricity for the local population and promote a much need investment for a country which has been showing steady growth for the past 20 years.
+        </p>
+        <p>
+          HQ Power Project is owned by Hakan AS, a Turkish Energy Company and QUANTUM POWER, an international power company and THEMIS a project development company. Included lenders are AFC (Africa Finance Corporation) which served as the lead arranger for the debt, and other lenders like Finnfund, Trade and Development Bank (TDB), African Export-Import Bank, and the Development Bank of Rwanda.
+        </p>
+        <p>
+          <strong>About IJ Global Award</strong><br>
+          Africa Energy & Infrastructure Investment Forum (‘AEIIF’) is part of IJ Global’s Energy & Infrastructure Forums series focusing on opportunities in Africa, exploring successful approaches for mitigating risks and unlocking the huge potential of energy and infrastructure investments in Sub-Saharan Africa. The award itself recognises an outstanding energy or water deal that has reached financial closure between 1 January 2017 and 31 December 2017, judged by a panel of leading industry experts.
+        </p>
+        <p>
+          <strong>Sponsors and Lenders</strong><br>
+          <img src="assets/Sponsors and lenders.png" alt="Sponsors and Lenders" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        </p>
+        <p>
+          <strong>SHAREHOLDERS</strong><br>
+          <img src="assets/shareholders.jpg" alt="Shareholders" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        </p>
+        <p>
+          “We have to build it though. This means nothing without execution. Counting on every single person here to make it” said the Chief Executive Officer.
+          <br>
+          <img src="assets/ceo.png" alt="CEO" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        </p>
       </section>
     </div>
   </div>
@@ -733,9 +860,36 @@
       <button class="close-btn" aria-label="Close">&times;</button>
       <img src="assets/gisagara-donation.jpg" alt="Donation to Gisagara Primary School">
       <h2>HQ POWER AND SHAPOORJI PALLONJI RWANDA DONATE 16M RWF WORTH OF MATERIALS TO GISAGARA PRIMARY SCHOOL</h2>
-      <div class="meta">2023 · By HQ Power Administrator</div>
+     <!-- <div class="meta">Gisagara, 06th March 2018 · By HQ Power Administrator</div>-->
       <section>
-        <p>HQ Power and Shapoorji Pallonji Rwanda have donated materials worth 16 million RWF to support education in Gisagara District.</p>
+        <p>
+          HQ Power and Shapoorji Pallonji Rwanda have donated assorted scholastic materials to Kabumbwe Primary School in Mamba Sector, Gisagara District. The materials including bags, books, pens and pencils were given to pupils earlier this week.
+        </p>
+        <img src="assets/gisagara-donation-pupils.jpg" alt="HQ Power team with pupils" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        <p>
+          The HQ Power team with some of the pupils who received the scholastic materials. The HQ Power team and Shapoorji Pallonji team with some of the 500 pupils who received the scholastic materials.
+        </p>
+        <p>
+          Handing over the donation, the CEO Hakan Karasoy said the donation was part of ways of giving back to the community, where they are constructing a peat power plant.
+        </p>
+        <img src="assets/gisagara-donation-ceo.jpg" alt="CEO HQ Power at donation" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        <p>
+          <strong>CEO HQPOWER</strong><br>
+          “Our primary objective here is to construct a plant that will produce electricity from the peat available here but that’s not all; we want to elevate the welfare of our neighbors and the plant in particular. We can only be proud when our neighbors are proud of our presence” said Hakan.
+        </p>
+        <p>
+          Mr. Hakan Karasoy stressed their concern for families which he said it is why they are supporting children education as a way of supporting families in the short and long run. “We believe the children are the generation after us this is why we give them scholastic materials to support them on their journey of supporting themselves and their families,” he added.
+        </p>
+        <p>
+          The items went to the best pupils in class and also children from vulnerable families under the first category of Ubudehe. According to the school head teacher, Cassien Harerimana, several pupils from vulnerable families are prone to absenteeism and eventually dropping out of school mainly because of lack of scholastic materials.
+        </p>
+        <img src="assets/gisagara-donation-ceo-pupil.jpg" alt="CEO donates materials to pupil" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        <img src="assets/gisagara-donation-pd.jpg" alt="PD of HQ Power at donation" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        <img src="assets/gisagara-donation-team.jpg" alt="HQ Power team and teacher" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        <img src="assets/gisagara-donation-school.jpg" alt="Gisagara Primary School" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        <p>
+          The school has a population of about 2000 pupils.
+        </p>
       </section>
     </div>
   </div>
@@ -743,11 +897,18 @@
   <div class="modal-bg" id="modal-certificate">
     <div class="modal">
       <button class="close-btn" aria-label="Close">&times;</button>
-      <img src="assets/certificate.jpg" alt="Certificate of Recognition">
+      <!-- <img src="assets/certificate.jpg" alt="Certificate of Recognition"> -->
       <h2>CERTIFICATE OF RECOGNITION</h2>
-      <div class="meta">2023 · By HQ Power Administrator</div>
+      <div class="meta">February 9, 2018 · By HQ Power Administrator</div>
       <section>
-        <p>HQ Power receives a certificate of recognition for outstanding contribution to the community and energy sector.</p>
+        <p>
+          The Management of YUMN Ltd (HQ Power Rwanda) was recognized by one of its major stakeholders, Gisagara District, Mamba Sector for its role in the achievement of this sector’s 2016/2017 fiscal year performance contracts.
+        </p>
+        <img src="assets/certificate-recognition.jpg" alt="Recognition Ceremony" style="max-width:100%;border-radius:1em;margin:1em 0;">
+        <p>
+          <strong>MAMBA SECTOR</strong><br>
+          HQ Power Rwanda prides itself in the success and development of its neighboring community as this is one of its corporate social responsibilities.
+        </p>
       </section>
     </div>
   </div>
@@ -757,7 +918,7 @@
       <button class="close-btn" aria-label="Close">&times;</button>
       <img src="assets/governor-visit.jpg" alt="Governor Visit HQ Power">
       <h2>GOVERNOR OF THE SOUTHERN PROVINCE VISIT THE HQ POWER PROJECT</h2>
-      <div class="meta">2023 · By HQ Power Administrator</div>
+     <!-- <div class="meta">2023 · By HQ Power Administrator</div> -->
       <section>
         <p>The Governor of the Southern Province visited HQ Power Project to witness progress and community impact.</p>
       </section>

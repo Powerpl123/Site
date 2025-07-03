@@ -105,4 +105,19 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
       }
+
+    // Mobile nav toggle
+    const menuToggle = document.getElementById('menuToggle');
+    if (menuToggle) {
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+        });
+        // Optional: close menu when a link is clicked (for better UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 900) navLinks.classList.remove('open');
+            });
+        });
+    }
 });

@@ -28,17 +28,21 @@ body {
   background: rgba(255,255,255,0.97);
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start; /* FIXED: use flex-start for proper alignment */
   box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
+  max-width: 100vw;
   z-index: 1000;
   transition: box-shadow 0.3s, background 0.3s;
   animation: navFadeIn 1s cubic-bezier(.4,0,.2,1);
   backdrop-filter: blur(6px);
+  box-sizing: border-box;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 @keyframes navFadeIn {
   from { opacity: 0; transform: translateY(-30px);}
@@ -55,12 +59,19 @@ body {
 .logo img:hover { transform: scale(1.07) rotate(-3deg); }
 .nav-links-horizontal {
   display: flex;
-  gap: 1.5rem;
-  list-style: none;
+  gap: 1rem; /* Reduced gap */
   align-items: center;
-  margin-left: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap; /* Allow wrapping if needed */
+  justify-content: center;
+  min-width: 0;
+  max-width: 100vw;
 }
-.nav-links-horizontal li { position: relative; }
+.nav-links-horizontal li {
+  white-space: nowrap;
+}
 .nav-links-horizontal a, .signup-btn {
   color: #1976d2;
   text-decoration: none;
@@ -140,7 +151,13 @@ body {
   from { opacity: 0; transform: translateY(-40px);}
   to { opacity: 1; transform: none;}
 }
-.menu-toggle { display: none; font-size: 2rem; color: #ffd600; cursor: pointer; }
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #ffd600;
+  cursor: pointer;
+  margin-left: auto;
+}
 
 @media (max-width: 900px) {
   .navbar-horizontal {
@@ -153,19 +170,10 @@ body {
   }
   .nav-links-horizontal {
     flex-direction: column;
-    background: rgba(255,255,255,0.97);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    display: none;
-    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
-    z-index: 1002;
+    align-items: flex-start;
     width: 100vw;
-    animation: navFadeIn 0.5s;
-  }
-  .nav-links-horizontal.open {
-    display: flex;
+    max-width: 100vw;
+    gap: 0.5rem;
   }
   .menu-toggle {
     display: block;
@@ -630,19 +638,10 @@ footer {
   }
   .nav-links-horizontal {
     flex-direction: column;
-    background: rgba(255,255,255,0.97);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    display: none;
-    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
-    z-index: 1002;
+    align-items: flex-start;
     width: 100vw;
-    animation: navFadeIn 0.5s;
-  }
-  .nav-links-horizontal.open {
-    display: flex;
+    max-width: 100vw;
+    gap: 0.5rem;
   }
   .menu-toggle {
     display: block;
@@ -916,7 +915,7 @@ footer {
   .about-card { min-width: 220px; max-width: 100%; }
 }
 @media (max-width: 800px) {
-  .about-cards-row { flex-direction: column, gap: 1.5rem, align-items: stretch; }
+  .about-cards-row { flex-direction: column; gap: 1.5rem; align-items: stretch; }
   .about-card { width: 100%; }
 }
 /* --- Login Modal Styles --- */
@@ -1755,67 +1754,5 @@ footer {
   background: #e3f2fd;
   color: #388e3c;
 }
-.navbar-horizontal {
-  background: rgba(255,255,255,0.97);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 16px rgba(25, 118, 210, 0.08);
-  position: fixed; /* Always fixed at the top */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 1000;
-  transition: box-shadow 0.3s, background 0.3s;
-  animation: navFadeIn 1s cubic-bezier(.4,0,.2,1);
-  backdrop-filter: blur(6px);
-}
-@keyframes navFadeIn {
-  from { opacity: 0; transform: translateY(-30px);}
-  to { opacity: 1; transform: translateY(0);}
-}
-.main-content {
-  margin-top: 90px; /* Adjust if navbar height changes */
-}
-@media (max-width: 900px) {
-  .navbar-horizontal {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.7rem 1rem;
-  }
-  .main-content {
-    margin-top: 110px;
-  }
-  .nav-links-horizontal {
-    flex-direction: column;
-    background: rgba(255,255,255,0.97);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    display: none;
-    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
-    z-index: 1002;
-    width: 100vw;
-    animation: navFadeIn 0.5s;
-  }
-  .nav-links-horizontal.open {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-}
-@media (max-width: 600px) {
-  .navbar-horizontal {
-    padding: 0.5rem 0.5rem;
-  }
-  .main-content {
-    margin-top: 120px;
-  }
-  .nav-links-horizontal a {
-    font-size: 1em;
-    padding: 0.7em 1em;
-  }
-}
+
+/* --- Remove duplicate .navbar-horizontal block at the end --- */
